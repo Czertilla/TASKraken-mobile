@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loginButtonText">Войти</string>
+    <string name="emailFieldHint">электронная почта</string>
+    <string name="passwordFieldHint">пароль</string>
+    <string name="verifyTokenFieldHint">токен верификации</string>
+    <string name="sendTokenButtonText">Отправить токен</string>
+    <string name="verifyButtonText">Верифицировать</string>
+    <string name="usernameFieldHint">имя</string>
+    <string name="repeatPasswordFieldHint">повторите пароль</string>
+    <string name="registerButtonText">Зарегистрироваться</string>
+    <string name="passwordsUnmatchMessage">пароли не совпадают</string>
+</resources>
