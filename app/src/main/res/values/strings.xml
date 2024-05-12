@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">TASKraken</string>
+    <string name="app_name" translatable="false">TASKraken</string>
+    <string name="loginButtonText">Login</string>
+    <string name="emailFieldHint">email</string>
+    <string name="passwordFieldHint">password</string>
+    <string name="verifyTokenFieldHint">verify token</string>
+    <string name="sendTokenButtonText">Send token</string>
+    <string name="verifyButtonText">Verify</string>
+    <string name="usernameFieldHint">name</string>
+    <string name="repeatPasswordFieldHint">repeat password</string>
+    <string name="registerButtonText">Register</string>
+    <string name="passwordsUnmatchMessage">passwords don\'t match</string>
 </resources>
