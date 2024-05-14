@@ -15,7 +15,6 @@ import com.example.taskraken.network.schemas.users.UserRead;
 import com.example.taskraken.network.services.NetworkService;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -26,7 +25,7 @@ import retrofit2.Response;
 public class LoginActivity extends Activity {
     Button loginButton;
     TextView registerButton;
-    TextView debugView;
+    TextView debugText;
     EditText email;
     EditText password;
     NetworkService networkService;
@@ -38,7 +37,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         loginButton = this.findViewById(R.id.buttonLogin);
         registerButton = this.findViewById(R.id.gotoRegisterButton);
-        debugView = this.findViewById(R.id.debugTextView);
+        debugText = this.findViewById(R.id.debugTextView);
         email = this.findViewById(R.id.emailLoginField);
         password = this.findViewById(R.id.passwordLogin);
         networkService = NetworkService.getInstance();
@@ -51,16 +50,16 @@ public class LoginActivity extends Activity {
                     password.getText().toString()
                     )
                 .enqueue(new Callback<UserRead>() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) {
-                        debugView.setText(response.headers().toMultimap().toString());
-                        debugView.append("\n"+response.code());
+                        debugText.setText(response.headers().toMultimap().toString());
+                        debugText.append("\n"+response.code());
                         if (!response.isSuccessful() & response.errorBody() != null) {
                             try {
-                                debugView.append( new JSONObject(response.errorBody().string())
-                                        .toString()
-                                );
-                            } catch (JSONException | IOException e) {
+                                debugText.setText(""+response.code());
+                                debugText.append(response.errorBody().string());
+                            } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
                         } else if (response.isSuccessful()) {
@@ -72,7 +71,7 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onFailure(@NonNull Call call, @NonNull Throwable t) {
 
-                        debugView.setText("Error occurred while getting request!");
+                        debugText.setText("Error occurred while getting request!");
                         t.printStackTrace();
                     }
                 });

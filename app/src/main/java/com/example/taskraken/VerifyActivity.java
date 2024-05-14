@@ -117,9 +117,8 @@ public class VerifyActivity extends Activity {
                             if (response.isSuccessful()){
                                 VerifyActivity.this.finish();
                             }
-                            else {
+                            else  if (response.errorBody() != null){
                                 try {
-                                    assert response.errorBody() != null;
                                     debugText.setText(""+response.code());
                                     debugText.append(response.errorBody().string());
                                 } catch (IOException e) {
