@@ -1,4 +1,4 @@
-package com.example.taskraken;
+package com.example.taskraken.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,11 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.taskraken.R;
 import com.example.taskraken.network.api.AuthApi;
 import com.example.taskraken.network.schemas.users.UserRead;
 import com.example.taskraken.network.services.NetworkService;
-
-import org.json.JSONException;
 
 import java.io.IOException;
 

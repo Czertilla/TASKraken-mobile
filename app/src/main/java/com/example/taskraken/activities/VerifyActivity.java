@@ -1,24 +1,23 @@
-package com.example.taskraken;
+package com.example.taskraken.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.taskraken.R;
 import com.example.taskraken.network.api.AuthApi;
 import com.example.taskraken.network.schemas.auth.VerifyRequest;
 import com.example.taskraken.network.schemas.auth.VerifyTokenRequest;
 import com.example.taskraken.network.services.NetworkService;
 
 import java.io.IOException;
-import java.util.Timer;
 
 import retrofit2.Call;
 import retrofit2.Callback;

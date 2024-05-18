@@ -1,4 +1,4 @@
-package com.example.taskraken;
+package com.example.taskraken.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.taskraken.R;
 import com.example.taskraken.network.services.NetworkService;
 import com.example.taskraken.network.api.UsersApi;
 import com.example.taskraken.network.schemas.users.UserRead;
