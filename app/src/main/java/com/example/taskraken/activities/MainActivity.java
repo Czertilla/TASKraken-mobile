@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         debugTextView = this.findViewById(R.id.debugTextView);
     }
 
+    private void setUpSideMenu(){
+
+    }
+
     private void checkAuth(){
         usersApi.getCurrentUser().enqueue(new Callback<UserRead>() {
             @Override
