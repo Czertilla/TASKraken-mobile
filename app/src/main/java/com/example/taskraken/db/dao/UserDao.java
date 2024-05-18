@@ -25,5 +25,9 @@ public interface UserDao {
     User getById(UUID id);
 
     @Update
-    public void updateUsers(User user);
+    public void updateUser(User user);
+
+    @Query("select 1 from user where user.picked = 1")
+    User getPickedUser();
+
 }
