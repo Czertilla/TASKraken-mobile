@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        networkService = NetworkService.getInstance();
-        usersApi = networkService.getUserApi();
-        debugTextView = this.findViewById(R.id.debugTextView);
+        setUpNetwork();
     }
 
     @Override
@@ -45,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         checkAuth();
+    }
+
+    private void setUpNetwork(){
+        networkService = NetworkService.getInstance();
+        usersApi = networkService.getUserApi();
+        debugTextView = this.findViewById(R.id.debugTextView);
     }
 
     private void checkAuth(){
