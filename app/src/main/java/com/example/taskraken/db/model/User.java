@@ -1,6 +1,7 @@
 package com.example.taskraken.db.model;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -20,6 +21,8 @@ public class User {
     public Boolean isSuperuser;
     public Boolean isVerified;
     public String username;
+    @ColumnInfo(defaultValue = "false")
+    private Boolean picked;
 
     public User(UserRead user){
         this.id = user.getId();
@@ -29,6 +32,14 @@ public class User {
         this.isSuperuser = user.getSuperuser();
         this.isVerified = user.getVerified();
         this.username = user.getUsername();
+    }
+
+    public void pick(){
+        this.picked = true;
+    }
+
+    public void unpick(){
+        this.picked = false;
     }
 
     @NonNull
