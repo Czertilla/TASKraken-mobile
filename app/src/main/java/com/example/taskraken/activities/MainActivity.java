@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        checkLogin();
+        checkAuth();
     }
 
-    private void checkLogin(){
+    private void checkAuth(){
         usersApi.getCurrentUser().enqueue(new Callback<UserRead>() {
             @Override
             public void onResponse(
@@ -76,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
                         default: {
                             if (response.errorBody() != null) {
                                 try {
-                                    debugTextView.append(new JSONObject(response.errorBody().string())
+                                    debugTextView.append(new JSONObject(
+                                            response.errorBody().string()
+                                            )
                                             .toString()
                                     );
                                 } catch (JSONException | IOException e) {
