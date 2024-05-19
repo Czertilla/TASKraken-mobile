@@ -6,14 +6,14 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.taskraken.network.schemas.users.UserRead;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.UUID;
 
-@Entity(tableName="user")
+@Entity(tableName="users")
 public class User {
     @PrimaryKey()
+    @NonNull
+    @ColumnInfo(name="ID")
     public UUID id;
     public String email;
     public String password;
@@ -24,14 +24,39 @@ public class User {
     @ColumnInfo(defaultValue = "false")
     private Boolean picked;
 
-    public User(UserRead user){
-        this.id = user.getId();
-        this.password = user.getPassword();
-        this.email = user.getEmail();
-        this.isActive = user.getActive();
-        this.isSuperuser = user.getSuperuser();
-        this.isVerified = user.getVerified();
-        this.username = user.getUsername();
+    public void setPicked(Boolean picked) {
+        this.picked = picked;
+    }
+
+    public User(
+            @NonNull UUID id,
+            String password,
+            String email,
+            Boolean isActive,
+            Boolean isSuperuser,
+            Boolean isVerified,
+            String username
+    ){
+        this.id = id;
+        this.password = password;
+        this.email = email;
+        this.isActive = isActive;
+        this.isSuperuser = isSuperuser;
+        this.isVerified = isVerified;
+        this.username = username;
+        pick();
+    }
+
+    public User(@NonNull UserRead user){
+        this(
+            user.getId(),
+            user.getPassword(),
+            user.getEmail(),
+            user.getActive(),
+            user.getSuperuser(),
+            user.getVerified(),
+            user.getUsername()
+        );
     }
 
     public void pick(){
@@ -40,6 +65,10 @@ public class User {
 
     public void unpick(){
         this.picked = false;
+    }
+
+    public Boolean getPicked() {
+        return picked;
     }
 
     @NonNull
