@@ -1,6 +1,10 @@
 package com.example.taskraken.network.services;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
+
+import com.example.taskraken.db.repository.CookieRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +15,20 @@ import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
 
 public class CookieService implements CookieJar {
+    CookieRepository cookieRepository;
 
-    private List<Cookie> cookies;
+    public CookieService() {
+        super();
+        this.cookieRepository = CookieRepository.getInstance();
+    }
 
     @Override
     public void saveFromResponse(@NonNull HttpUrl url, @NonNull List<Cookie> cookies) {
-        this.cookies = cookies;
+        cookieRepository.insert(cookies);
     }
 
     @Override
     public List<Cookie> loadForRequest(@NonNull HttpUrl url) {
-        if (cookies != null)
-            return cookies;
-        return new ArrayList<Cookie>();
+        return cookieRepository.getAllCookies();
     }
 }
