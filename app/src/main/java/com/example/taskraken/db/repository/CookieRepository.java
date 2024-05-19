@@ -2,7 +2,6 @@ package com.example.taskraken.db.repository;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.room.Room;
 
 import com.example.taskraken.db.LocalDatabase;
@@ -10,7 +9,6 @@ import com.example.taskraken.db.model.Cookie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class CookieRepository {
     private static CookieRepository cookieRepository;
@@ -54,7 +52,7 @@ public class CookieRepository {
     public List<okhttp3.Cookie> getAllCookies() {
         List<Cookie> cookies = localDatabase.cookieDao().getAllCookies();
         List<okhttp3.Cookie> result = new ArrayList<>();
-        cookies.forEach(cookie -> result.add(cookie.getCookie()));
+        cookies.forEach(cookie -> addCookie(result, cookie));
         return result;
     }
 
@@ -77,6 +75,13 @@ public class CookieRepository {
 
     public void update(Cookie... cookies){
         localDatabase.cookieDao().updateCookie(cookies);
+    }
+
+    private void addCookie(List<okhttp3.Cookie> data, Cookie cookie){
+        if (cookie.isExpired())
+            localDatabase.cookieDao().delete(cookie);
+        else
+            data.add(cookie.getCookie());
     }
 
 }
