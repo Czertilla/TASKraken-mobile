@@ -136,29 +136,30 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void getUserFromCache(){
-        User user = userRepository.getPickedUser();
-        if (user == null){
-            flag = false;
-            return;
-        }
-        networkService.getAuthApi().login(
-                user.email,
-                user.password
-        ).enqueue(new Callback<UserRead>() {
-            @Override
-            public void onResponse(
-                    @NonNull Call<UserRead> call,
-                    @NonNull Response<UserRead> response
-            ) {
-                flag = response.isSuccessful();
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<UserRead> call, @NonNull Throwable t) {
-                Log.e("", "");
-                flag = false;
-            }
-        });
-    }
+//    private void getUserFromCache(){
+//        User user = userRepository.getPickedUser();
+//        boolean flag;
+//        if (user == null){
+//            flag = false;
+//            return;
+//        }
+//        networkService.getAuthApi().login(
+//                user.email,
+//                user.password
+//        ).enqueue(new Callback<UserRead>() {
+//            @Override
+//            public void onResponse(
+//                    @NonNull Call<UserRead> call,
+//                    @NonNull Response<UserRead> response
+//            ) {
+//                flag = response.isSuccessful();
+//            }
+//
+//            @Override
+//            public void onFailure(@NonNull Call<UserRead> call, @NonNull Throwable t) {
+//                Log.e("", "");
+//                flag = false;
+//            }
+//        });
+//    }
 }
