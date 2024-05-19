@@ -1,5 +1,6 @@
 package com.example.taskraken.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -16,18 +17,24 @@ import java.util.UUID;
 public interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(User user);
+    void insertOne(User user);
 
-    @Query("SELECT * FROM user")
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(User... users);
+
+    @Query("SELECT * FROM users")
     List<User> getAllUsers();
 
-    @Query("select 1 from user where user.id = :id")
-    User getById(UUID id);
+    @Query("select * from users where users.ID = :id")
+    List<User> getById(UUID id);
 
     @Update
     public void updateUser(User user);
 
-    @Query("select 1 from user where user.picked = 1")
-    User getPickedUser();
+    @Update
+    public void updateUsers(User... user);
+
+    @Query("select * from users where users.picked = 1")
+    List<User> getPickedUser();
 
 }
