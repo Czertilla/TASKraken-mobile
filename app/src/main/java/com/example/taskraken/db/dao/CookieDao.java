@@ -1,6 +1,7 @@
 package com.example.taskraken.db.dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -34,4 +35,6 @@ public interface CookieDao {
     @Update
     public void updateCookie(Cookie... cookies);
 
+    @Delete
+    public void delete(Cookie cookie);
 }
