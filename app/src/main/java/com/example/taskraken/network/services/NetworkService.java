@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkService {
     private static NetworkService mInstance;
-    private static final String BASE_URL = "http://185.209.114.152/";
+    private static final String BASE_URL = "https://taskraken.czertilla.ru";
     private final Retrofit mRetrofit;
 
     private NetworkService() {
