@@ -40,7 +40,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/fieldemail_AV"
+        android:id="@+id/field_email_AV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
