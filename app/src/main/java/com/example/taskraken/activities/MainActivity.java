@@ -69,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpSideMenu(){
+        sideMenuButton = findViewById(R.id.sideMenuButton);
+        sideMenuButton.setOnClickListener(v -> {
+            mainDrawerLayout.openDrawer(GravityCompat.START);
+        });
+        navigationView = findViewById(R.id.mainNavigationView);
+        navigationView.setNavigationItemSelectedListener(new MainNavigationMenuListener());
+    }
 
     private void setUpBottomMenu(){
         navController = (
