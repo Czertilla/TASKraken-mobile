@@ -5,7 +5,7 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/currentRoleItem"
+            android:id="@+id/item_current_role"
             android:title="@string/current_role">
             <menu>
                 <item
