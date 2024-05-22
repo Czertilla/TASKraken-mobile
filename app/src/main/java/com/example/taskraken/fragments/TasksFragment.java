@@ -108,15 +108,15 @@ public class TasksFragment extends Fragment {
     }
 
 
-    private void setTasksResponse(){
+    private void setTasksResponse() {
         setTasksResponse(0, pageSize);
     }
 
-    private void setTasksResponse(int page){
+    private void setTasksResponse(int page) {
         setTasksResponse(page, pageSize);
     }
 
-    private void setTasksResponse(int page, int size){
+    private void setTasksResponse(int page, int size) {
         tasksApi.myTasks(page, size).enqueue(new Callback<TaskPreviewPagination>() {
             @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
             @Override
@@ -124,18 +124,17 @@ public class TasksFragment extends Fragment {
                     @NonNull Call<TaskPreviewPagination> call,
                     @NonNull Response<TaskPreviewPagination> response
             ) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     assert response.body() != null;
                     Pagination pagination = response.body().getPagination();
                     total = pagination.getTotal();
                     List<TaskPreview> previews = response.body().getResult();
                     int begin = pagination.getPage() * pagination.getSize();
                     int end = (pagination.getPage() + 1) * pagination.getSize();
-                    if (begin == 0 && end > begin && previews.isEmpty()){
+                    if (begin == 0 && end > begin && previews.isEmpty()) {
                         tasksList.clear();
-                    }
-                    else{
-                        for (int i=begin, j=0; i < end &&  j < previews.size(); i++, j++){
+                    } else {
+                        for (int i = begin, j = 0; i < end && j < previews.size(); i++, j++) {
                             if (i >= tasksList.size())
                                 tasksList.add(previews.get(j));
                             else
