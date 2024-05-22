@@ -32,7 +32,7 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
             @NonNull ViewGroup parent, int viewType
     ) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view  = layoutInflater.inflate(R.layout.task_card ,parent, false);
+        View view  = layoutInflater.inflate(R.layout.card_view_task,parent, false);
         return new ViewHolder(view);
     }
 
