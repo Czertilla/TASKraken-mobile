@@ -49,7 +49,7 @@ public class VerifyActivity extends Activity {
         verifyButton = this.findViewById(R.id.verifyButton);
         coolDownTimer = this.findViewById(R.id.text_view_cool_down_AV);
         emailField = this.findViewById(R.id.field_email_AV);
-        tokenField = this.findViewById(R.id.verifyTokenField);
+        tokenField = this.findViewById(R.id.field_verify_token);
         debugText = this.findViewById(R.id.text_view_debug_AF);
 
         if (email != null) {

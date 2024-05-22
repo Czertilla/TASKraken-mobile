@@ -55,7 +55,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/verifyTokenField"
+        android:id="@+id/field_verify_token"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints=""
