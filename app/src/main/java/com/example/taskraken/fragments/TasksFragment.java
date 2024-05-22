@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,8 +45,8 @@ public class TasksFragment extends Fragment {
 
     NetworkService networkService;
     TasksApi tasksApi;
+
     TextView textView;
-    TextView debugText;
 
     int pageSize;
 
@@ -79,43 +80,29 @@ public class TasksFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        setTasksResponse();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_tasks, container, false);
         context = rootView.getContext();
 
-        setUpTextView();
-        setupRecyclerView();
-        return rootView;
-    }
+        textView = rootView.findViewById(R.id.text_view_no_tasks);
 
-    private void setupRecyclerView() {
         tasksRecyclerView = rootView.findViewById(R.id.recycler_view_tasks);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         tasksRecyclerView.setAdapter(recyclerAdapter = new TaskRecyclerAdapter(tasksList));
+        setTasksResponse();
+        return rootView;
     }
 
-    private void setUpTextView() {
-        textView = rootView.findViewById(R.id.text_view_no_tasks);
-        debugText = requireActivity().findViewById(R.id.text_view_debug_AM);
-    }
-
-
-    private void setTasksResponse() {
+    private void setTasksResponse(){
         setTasksResponse(0, pageSize);
     }
 
-    private void setTasksResponse(int page) {
+    private void setTasksResponse(int page){
         setTasksResponse(page, pageSize);
     }
 
-    private void setTasksResponse(int page, int size) {
+    private void setTasksResponse(int page, int size){
         tasksApi.myTasks(page, size).enqueue(new Callback<TaskPreviewPagination>() {
             @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
             @Override
@@ -123,27 +110,29 @@ public class TasksFragment extends Fragment {
                     @NonNull Call<TaskPreviewPagination> call,
                     @NonNull Response<TaskPreviewPagination> response
             ) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful()){
                     assert response.body() != null;
                     Pagination pagination = response.body().getPagination();
                     total = pagination.getTotal();
                     List<TaskPreview> previews = response.body().getResult();
                     int begin = pagination.getPage() * pagination.getSize();
                     int end = (pagination.getPage() + 1) * pagination.getSize();
-                    if (begin == 0 && end > begin && previews.isEmpty()) {
+                    if (begin == 0 && end > begin && previews.isEmpty()){
                         tasksList.clear();
-                    } else {
-                        for (int i = begin, j = 0; i < end && j < previews.size(); i++, j++) {
+                    }
+                    else{
+                        for (int i=begin, j=0; i < end &&  j < previews.size(); i++, j++){
                             if (i >= tasksList.size())
                                 tasksList.add(previews.get(j));
                             else
                                 tasksList.set(i, previews.get(j));
                         }
                     }
-                } else {
+                }else{
 //                    TODO implement
-                    assert response.errorBody() != null;
-                    debugText.setText(response.code() + response.errorBody().toString());
+//                    TextView debugText = requireActivity().findViewById(R.id.debugTextView);
+//                    assert response.errorBody() != null;
+//                    debugText.setText(response.code()+ response.errorBody().toString());
                 }
                 textView.setVisibility(tasksList.isEmpty() ? View.VISIBLE : View.INVISIBLE);
                 recyclerAdapter.notifyDataSetChanged();
