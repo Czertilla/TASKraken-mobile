@@ -108,7 +108,7 @@ public class OrganizationFragment extends Fragment {
     private void setUpFloatingButtons() {
         addFloatButton = rootView.findViewById(R.id.floating_button_add_FOs);
         subButtons.add(addOrgButton = rootView.findViewById(R.id.button_regist_org_nav));
-        subButtons.add(addRoleButton = rootView.findViewById(R.id.addRoleButton));
+        subButtons.add(addRoleButton = rootView.findViewById(R.id.button_create_subordinate_nav));
     }
 
     private void setUpNavController(){
