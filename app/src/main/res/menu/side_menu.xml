@@ -12,7 +12,7 @@
                     android:id="@+id/recentRoleItem"
                     android:title="@string/recent_roles"/>
                 <item
-                    android:id="@+id/myRolesItem"
+                    android:id="@+id/item_my_roles"
                     android:title="@string/my_roles"/>
             </menu>
         </item>
