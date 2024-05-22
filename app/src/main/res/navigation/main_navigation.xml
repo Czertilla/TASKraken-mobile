@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_tasks" />
 
     <fragment
-        android:id="@+id/organizationFragment"
+        android:id="@+id/fragment_organizations"
         android:name="com.example.taskraken.fragments.OrganizationFragment"
         android:label="fragment_organization"
         tools:layout="@layout/fragment_organizations" >
@@ -31,6 +31,6 @@
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             android:id="@+id/navigateToOrganizationFragment"
-            app:destination="@id/organizationFragment" />
+            app:destination="@id/fragment_organizations" />
     </fragment>
 </navigation>

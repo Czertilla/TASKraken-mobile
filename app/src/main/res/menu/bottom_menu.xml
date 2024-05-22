@@ -6,7 +6,7 @@
         android:title="@string/tasks"
         android:icon="@drawable/ic_tasks"/>
     <item
-        android:id="@+id/organizationFragment"
+        android:id="@+id/fragment_organizations"
         android:title="@string/organizations"
         android:icon="@drawable/ic_organizations"/>
 </menu>
