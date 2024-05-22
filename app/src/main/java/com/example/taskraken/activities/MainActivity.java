@@ -4,10 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -23,8 +22,6 @@ import com.example.taskraken.R;
 import com.example.taskraken.adapters.TaskRecyclerAdapter;
 import com.example.taskraken.db.repository.CookieRepository;
 import com.example.taskraken.db.repository.UserRepository;
-import com.example.taskraken.fragments.OrganizationFragment;
-import com.example.taskraken.fragments.TasksFragment;
 import com.example.taskraken.network.services.NetworkService;
 import com.example.taskraken.network.api.UsersApi;
 import com.example.taskraken.network.schemas.users.UserRead;
@@ -35,7 +32,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
