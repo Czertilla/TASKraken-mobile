@@ -87,7 +87,6 @@ public class OrganizationFragment extends Fragment {
             onAddFloatButtonClicked();
         });
         addOrgButton.setOnClickListener(v -> {
-//            TODO implement
             Toast.makeText(
                     context,
                     "add Organization in development",
