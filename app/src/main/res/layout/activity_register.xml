@@ -7,7 +7,7 @@
     tools:context=".activities.RegisterActivity">
 
     <EditText
-        android:id="@+id/usernameRegisterField"
+        android:id="@+id/field_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -15,14 +15,14 @@
         android:hint="@string/usernameFieldHint"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/emailRegisterField"
-        app:layout_constraintEnd_toEndOf="@+id/emailRegisterField"
+        app:layout_constraintBottom_toTopOf="@+id/field_email"
+        app:layout_constraintEnd_toEndOf="@+id/field_email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/emailRegisterField"
+        app:layout_constraintStart_toStartOf="@+id/field_email"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/emailRegisterField"
+        android:id="@+id/field_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"

@@ -40,10 +40,10 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         registryButton = this.findViewById(R.id.registerButton);
-        emailField = this.findViewById(R.id.emailRegisterField);
+        emailField = this.findViewById(R.id.field_email);
         passwordField = this.findViewById(R.id.passwordRegisterField);
         repeatField = this.findViewById(R.id.passwordRegisterRepeat);
-        usernameField = this.findViewById(R.id.usernameRegisterField);
+        usernameField = this.findViewById(R.id.field_username);
         debugText = this.findViewById(R.id.text_view_debug);
 
         networkService = NetworkService.getInstance();
