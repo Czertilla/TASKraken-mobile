@@ -15,14 +15,14 @@
         android:hint="@string/usernameFieldHint"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/field_email"
-        app:layout_constraintEnd_toEndOf="@+id/field_email"
+        app:layout_constraintBottom_toTopOf="@+id/field_email_AR"
+        app:layout_constraintEnd_toEndOf="@+id/field_email_AR"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/field_email"
+        app:layout_constraintStart_toStartOf="@+id/field_email_AR"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/field_email"
+        android:id="@+id/field_email_AR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
