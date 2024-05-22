@@ -38,7 +38,7 @@ public class LoginActivity extends Activity {
         registerButton = this.findViewById(R.id.gotoRegisterButton);
         debugText = this.findViewById(R.id.debugTextView);
         email = this.findViewById(R.id.field_email_login);
-        password = this.findViewById(R.id.passwordLogin);
+        password = this.findViewById(R.id.field_password);
         networkService = NetworkService.getInstance();
 
         authApi = networkService.getAuthApi();
