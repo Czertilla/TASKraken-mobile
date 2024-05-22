@@ -37,7 +37,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/passwordRegisterRepeat"
+        android:id="@+id/field_password_repeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -62,10 +62,10 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#546E7A"
-        app:layout_constraintBottom_toTopOf="@+id/passwordRegisterRepeat"
-        app:layout_constraintEnd_toEndOf="@+id/passwordRegisterRepeat"
+        app:layout_constraintBottom_toTopOf="@+id/field_password_repeat"
+        app:layout_constraintEnd_toEndOf="@+id/field_password_repeat"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/passwordRegisterRepeat"
+        app:layout_constraintStart_toStartOf="@+id/field_password_repeat"
         android:autofillHints="" />
 
     <Button

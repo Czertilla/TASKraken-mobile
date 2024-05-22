@@ -42,7 +42,7 @@ public class RegisterActivity extends Activity {
         registryButton = this.findViewById(R.id.registerButton);
         emailField = this.findViewById(R.id.field_email);
         passwordField = this.findViewById(R.id.passwordRegisterField);
-        repeatField = this.findViewById(R.id.passwordRegisterRepeat);
+        repeatField = this.findViewById(R.id.field_password_repeat);
         usernameField = this.findViewById(R.id.field_username);
         debugText = this.findViewById(R.id.text_view_debug);
 
