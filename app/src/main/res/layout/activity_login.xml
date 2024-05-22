@@ -7,7 +7,7 @@
     tools:context=".activities.LoginActivity">
 
     <EditText
-        android:id="@+id/field_email_login"
+        android:id="@+id/field_email_AL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints="emailAddress"
