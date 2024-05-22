@@ -34,7 +34,7 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginButton = this.findViewById(R.id.buttonLogin);
+        loginButton = this.findViewById(R.id.button_login);
         registerButton = this.findViewById(R.id.gotoRegisterButton);
         debugText = this.findViewById(R.id.debugTextView);
         email = this.findViewById(R.id.field_email_login);

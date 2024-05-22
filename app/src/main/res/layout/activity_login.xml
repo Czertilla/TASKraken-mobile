@@ -32,13 +32,13 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#546E7A"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
-        app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
-        app:layout_constraintStart_toStartOf="@+id/buttonLogin"
+        app:layout_constraintBottom_toTopOf="@+id/button_login"
+        app:layout_constraintEnd_toEndOf="@+id/button_login"
+        app:layout_constraintStart_toStartOf="@+id/button_login"
         tools:ignore="LabelFor" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/loginButtonText"
@@ -57,7 +57,7 @@
         android:layout_marginTop="84dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/button_login" />
 
     <TextView
         android:id="@+id/gotoRegisterButton"
@@ -65,8 +65,8 @@
         android:layout_height="wrap_content"
         android:text="@string/registerButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
-        app:layout_constraintStart_toStartOf="@+id/buttonLogin"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintEnd_toEndOf="@+id/button_login"
+        app:layout_constraintStart_toStartOf="@+id/button_login"
+        app:layout_constraintTop_toBottomOf="@+id/button_login"
         app:layout_constraintVertical_bias="0.060000002" />
 </androidx.constraintlayout.widget.ConstraintLayout>
