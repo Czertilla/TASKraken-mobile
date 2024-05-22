@@ -1,6 +1,7 @@
 package com.example.taskraken.network.services;
 
 import com.example.taskraken.network.api.AuthApi;
+import com.example.taskraken.network.api.TasksApi;
 import com.example.taskraken.network.api.UsersApi;
 
 import okhttp3.OkHttpClient;
@@ -41,6 +42,10 @@ public class NetworkService {
 
     public AuthApi getAuthApi() {
         return mRetrofit.create(AuthApi.class);
+    }
+
+    public TasksApi getTaskApi() {
+        return mRetrofit.create(TasksApi.class);
     }
 
     public String getBaseUrl(){
