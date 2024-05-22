@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mainDrawerLayout = findViewById(R.id.mainDrawerLayout);
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progress_bar_loading);
 
         setUpNetwork();
         setUpSideMenu();
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpSideMenu(){
-        sideMenuButton = findViewById(R.id.sideMenuButton);
+        sideMenuButton = findViewById(R.id.button_side_menu);
         sideMenuButton.setOnClickListener(v -> {
             mainDrawerLayout.openDrawer(GravityCompat.START);
         });
