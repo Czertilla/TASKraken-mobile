@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".activities.RegisterActivity">
 
     <EditText
-        android:id="@+id/usernameRegisterField"
+        android:id="@+id/field_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -15,14 +15,14 @@
         android:hint="@string/usernameFieldHint"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/emailRegisterField"
-        app:layout_constraintEnd_toEndOf="@+id/emailRegisterField"
+        app:layout_constraintBottom_toTopOf="@+id/field_email_AR"
+        app:layout_constraintEnd_toEndOf="@+id/field_email_AR"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/emailRegisterField"
+        app:layout_constraintStart_toStartOf="@+id/field_email_AR"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/emailRegisterField"
+        android:id="@+id/field_email_AR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -30,14 +30,14 @@
         android:hint="@string/emailFieldHint"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/passwordRegisterField"
-        app:layout_constraintEnd_toEndOf="@+id/passwordRegisterField"
+        app:layout_constraintBottom_toTopOf="@+id/field_password_register"
+        app:layout_constraintEnd_toEndOf="@+id/field_password_register"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/passwordRegisterField"
+        app:layout_constraintStart_toStartOf="@+id/field_password_register"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/passwordRegisterRepeat"
+        android:id="@+id/field_password_repeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -53,7 +53,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/passwordRegisterField"
+        android:id="@+id/field_password_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -62,10 +62,10 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#546E7A"
-        app:layout_constraintBottom_toTopOf="@+id/passwordRegisterRepeat"
-        app:layout_constraintEnd_toEndOf="@+id/passwordRegisterRepeat"
+        app:layout_constraintBottom_toTopOf="@+id/field_password_repeat"
+        app:layout_constraintEnd_toEndOf="@+id/field_password_repeat"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/passwordRegisterRepeat"
+        app:layout_constraintStart_toStartOf="@+id/field_password_repeat"
         android:autofillHints="" />
 
     <Button
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/debugTextView"
+        android:id="@+id/text_view_debug_AR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""

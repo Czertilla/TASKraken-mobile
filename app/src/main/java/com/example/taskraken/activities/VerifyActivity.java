@@ -1,24 +1,23 @@
-package com.example.taskraken;
+package com.example.taskraken.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.taskraken.R;
 import com.example.taskraken.network.api.AuthApi;
 import com.example.taskraken.network.schemas.auth.VerifyRequest;
 import com.example.taskraken.network.schemas.auth.VerifyTokenRequest;
 import com.example.taskraken.network.services.NetworkService;
 
 import java.io.IOException;
-import java.util.Timer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,12 +45,12 @@ public class VerifyActivity extends Activity {
         email = intent.getStringExtra("email");
         networkService = NetworkService.getInstance();
         authApi = networkService.getAuthApi();
-        sendButton = this.findViewById(R.id.sendVerifyTokenButton);
-        verifyButton = this.findViewById(R.id.verifyButton);
-        coolDownTimer = this.findViewById(R.id.sendTokenButtonCoolDownTime);
-        emailField = this.findViewById(R.id.emailVerifyField);
-        tokenField = this.findViewById(R.id.verifyTokenField);
-        debugText = this.findViewById(R.id.debugTextView);
+        sendButton = this.findViewById(R.id.button_request_token);
+        verifyButton = this.findViewById(R.id.button_verify);
+        coolDownTimer = this.findViewById(R.id.text_view_cool_down_AV);
+        emailField = this.findViewById(R.id.field_email_AV);
+        tokenField = this.findViewById(R.id.field_verify_token);
+        debugText = this.findViewById(R.id.text_view_debug_AF);
 
         if (email != null) {
             emailField.setText(email);

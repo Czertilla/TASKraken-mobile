@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/fragment_tasks">
+
+    <fragment
+        android:id="@+id/fragment_tasks"
+        android:name="com.example.taskraken.fragments.TasksFragment"
+        android:label="fragment_tasks"
+        tools:layout="@layout/fragment_tasks" />
+
+    <fragment
+        android:id="@+id/fragment_organizations"
+        android:name="com.example.taskraken.fragments.OrganizationFragment"
+        android:label="fragment_organization"
+        tools:layout="@layout/fragment_organizations" >
+        <action
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            android:id="@+id/navigateToOrgBlankFragment"
+            app:destination="@id/createOrgBlankFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createOrgBlankFragment"
+        android:name="com.example.taskraken.fragments.CreateOrgBlankFragment"
+        android:label="fragment_create_org_blank"
+        tools:layout="@layout/fragment_regist_org" >
+        <action
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            android:id="@+id/navigateToOrganizationFragment"
+            app:destination="@id/fragment_organizations" />
+    </fragment>
+</navigation>

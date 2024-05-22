@@ -1,4 +1,4 @@
-package com.example.taskraken;
+package com.example.taskraken.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,11 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.taskraken.R;
 import com.example.taskraken.network.api.AuthApi;
 import com.example.taskraken.network.schemas.users.UserRead;
 import com.example.taskraken.network.services.NetworkService;
-
-import org.json.JSONException;
 
 import java.io.IOException;
 
@@ -35,11 +34,11 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginButton = this.findViewById(R.id.buttonLogin);
-        registerButton = this.findViewById(R.id.gotoRegisterButton);
-        debugText = this.findViewById(R.id.debugTextView);
-        email = this.findViewById(R.id.emailLoginField);
-        password = this.findViewById(R.id.passwordLogin);
+        loginButton = this.findViewById(R.id.button_login);
+        registerButton = this.findViewById(R.id.button_register_nav);
+        debugText = this.findViewById(R.id.text_view_debug_AL);
+        email = this.findViewById(R.id.field_email_AL);
+        password = this.findViewById(R.id.field_password);
         networkService = NetworkService.getInstance();
 
         authApi = networkService.getAuthApi();

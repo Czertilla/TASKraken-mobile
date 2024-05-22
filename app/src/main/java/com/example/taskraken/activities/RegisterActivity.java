@@ -1,9 +1,8 @@
-package com.example.taskraken;
+package com.example.taskraken.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,12 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.taskraken.R;
 import com.example.taskraken.network.api.AuthApi;
 import com.example.taskraken.network.schemas.users.UserCreate;
 import com.example.taskraken.network.services.NetworkService;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -43,11 +40,11 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         registryButton = this.findViewById(R.id.registerButton);
-        emailField = this.findViewById(R.id.emailRegisterField);
-        passwordField = this.findViewById(R.id.passwordRegisterField);
-        repeatField = this.findViewById(R.id.passwordRegisterRepeat);
-        usernameField = this.findViewById(R.id.usernameRegisterField);
-        debugText = this.findViewById(R.id.debugTextView);
+        emailField = this.findViewById(R.id.field_email_AR);
+        passwordField = this.findViewById(R.id.field_password_register);
+        repeatField = this.findViewById(R.id.field_password_repeat);
+        usernameField = this.findViewById(R.id.field_username);
+        debugText = this.findViewById(R.id.text_view_debug_AR);
 
         networkService = NetworkService.getInstance();
         authApi = networkService.getAuthApi();
