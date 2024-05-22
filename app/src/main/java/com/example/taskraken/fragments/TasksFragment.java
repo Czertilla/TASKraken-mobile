@@ -45,8 +45,8 @@ public class TasksFragment extends Fragment {
 
     NetworkService networkService;
     TasksApi tasksApi;
-
     TextView textView;
+    TextView debugText;
 
     int pageSize;
 
@@ -80,19 +80,33 @@ public class TasksFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        setTasksResponse();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_tasks, container, false);
         context = rootView.getContext();
 
-        textView = rootView.findViewById(R.id.tasksFragmentEmptyText);
+        setUpTextView();
+        setupRecyclerView();
+        return rootView;
+    }
 
+    private void setupRecyclerView() {
         tasksRecyclerView = rootView.findViewById(R.id.tasksRecyclerView);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         tasksRecyclerView.setAdapter(recyclerAdapter = new TaskRecyclerAdapter(tasksList));
-        setTasksResponse();
-        return rootView;
     }
+
+    private void setUpTextView() {
+        textView = rootView.findViewById(R.id.tasksFragmentEmptyText);
+        debugText = requireActivity().findViewById(R.id.debugTextView);
+    }
+
 
     private void setTasksResponse(){
         setTasksResponse(0, pageSize);
@@ -128,11 +142,10 @@ public class TasksFragment extends Fragment {
                                 tasksList.set(i, previews.get(j));
                         }
                     }
-                }else{
+                } else {
 //                    TODO implement
-//                    TextView debugText = requireActivity().findViewById(R.id.debugTextView);
-//                    assert response.errorBody() != null;
-//                    debugText.setText(response.code()+ response.errorBody().toString());
+                    assert response.errorBody() != null;
+                    debugText.setText(response.code() + response.errorBody().toString());
                 }
                 textView.setVisibility(tasksList.isEmpty() ? View.VISIBLE : View.INVISIBLE);
                 recyclerAdapter.notifyDataSetChanged();
