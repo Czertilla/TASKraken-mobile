@@ -10,4 +10,20 @@
     <string name="repeatPasswordFieldHint">repeat password</string>
     <string name="registerButtonText">Register</string>
     <string name="passwordsUnmatchMessage">passwords don\'t match</string>
+    <string name="logout">logout</string>
+    <string name="my_roles">my roles</string>
+    <string name="current_role">current role</string>
+    <string name="recent_roles">recent roles</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="name">Name</string>
+    <string name="description">description</string>
+    <string name="tasks">Tasks</string>
+    <string name="organizations">Organizations</string>
+    <string name="there_are_no_current_tasks">There are no current tasks</string>
+    <string name="add_org_button_description">addition of organizations, substucts and or roles</string>
+    <string name="add_organization">create new organization</string>
+    <string name="add_substructure">add substructure</string>
+    <string name="add_subordinate_role">add subordinate role</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
