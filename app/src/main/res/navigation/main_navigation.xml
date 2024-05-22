@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/tasksFragment">
+    app:startDestination="@id/fragment_tasks">
 
     <fragment
-        android:id="@+id/tasksFragment"
+        android:id="@+id/fragment_tasks"
         android:name="com.example.taskraken.fragments.TasksFragment"
         android:label="fragment_tasks"
         tools:layout="@layout/fragment_tasks" />
