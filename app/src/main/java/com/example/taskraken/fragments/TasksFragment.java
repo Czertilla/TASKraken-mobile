@@ -103,7 +103,7 @@ public class TasksFragment extends Fragment {
 
     private void setUpTextView() {
         textView = rootView.findViewById(R.id.tasksFragmentEmptyText);
-        debugText = requireActivity().findViewById(R.id.text_view_debug);
+        debugText = requireActivity().findViewById(R.id.text_view_debug_AM);
     }
 
 
