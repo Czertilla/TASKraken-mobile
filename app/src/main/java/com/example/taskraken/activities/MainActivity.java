@@ -100,21 +100,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpBottomMenu(){
-        navController = (
-                (NavHostFragment) Objects
-                        .requireNonNull(
-                                getSupportFragmentManager()
-                                        .findFragmentById(R.id.fragment_container)
-                        )
-        ).getNavController();
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnItemSelectedListener(menuItem -> {
-            int id = menuItem.getItemId();
-            if (id == R.id.tasksNav) replaceFragment(new TasksFragment());
-            if (id == R.id.organizationNav) replaceFragment(new OrganizationFragment());
-            return true;
-        });
-        replaceFragment(new TasksFragment());
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_container);
+        assert navHostFragment != null;
+        NavController navController = navHostFragment.getNavController();
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        NavigationUI.setupWithNavController(bottomNav, navController);
     }
 
     private void checkAuth(){
