@@ -70,6 +70,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpSideMenu(){
 
+    private void setUpBottomMenu(){
+        navController = (
+                (NavHostFragment) Objects
+                        .requireNonNull(
+                                getSupportFragmentManager()
+                                        .findFragmentById(R.id.fragment_container)
+                        )
+        ).getNavController();
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(menuItem -> {
+            int id = menuItem.getItemId();
+            if (id == R.id.tasksNav) replaceFragment(new TasksFragment());
+            if (id == R.id.organizationNav) replaceFragment(new OrganizationFragment());
+            return true;
+        });
+        replaceFragment(new TasksFragment());
     }
 
     @SuppressLint("CommitTransaction")
