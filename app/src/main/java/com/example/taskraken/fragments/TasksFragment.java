@@ -61,7 +61,7 @@ public class TasksFragment extends Fragment {
     }
 
 
-    public static TasksFragment newInstance(NavController navController) {
+    public static TasksFragment newInstance() {
         TasksFragment fragment = new TasksFragment();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
