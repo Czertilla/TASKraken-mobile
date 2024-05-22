@@ -30,10 +30,10 @@
         android:hint="@string/emailFieldHint"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/passwordRegisterField"
-        app:layout_constraintEnd_toEndOf="@+id/passwordRegisterField"
+        app:layout_constraintBottom_toTopOf="@+id/field_password_register"
+        app:layout_constraintEnd_toEndOf="@+id/field_password_register"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/passwordRegisterField"
+        app:layout_constraintStart_toStartOf="@+id/field_password_register"
         android:autofillHints="" />
 
     <EditText
@@ -53,7 +53,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/passwordRegisterField"
+        android:id="@+id/field_password_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
