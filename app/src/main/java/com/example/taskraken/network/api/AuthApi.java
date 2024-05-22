@@ -35,4 +35,7 @@ public interface AuthApi {
     public  Call<Object> verify(
             @Body VerifyRequest verifyRequest
     );
+
+    @POST(prefix+"/jwt/logout")
+    public Call<Object> logout();
 }

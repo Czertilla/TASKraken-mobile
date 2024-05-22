@@ -10,4 +10,17 @@
     <string name="repeatPasswordFieldHint">повторите пароль</string>
     <string name="registerButtonText">Зарегистрироваться</string>
     <string name="passwordsUnmatchMessage">пароли не совпадают</string>
+    <string name="logout">выйти</string>
+    <string name="my_roles">мои роли</string>
+    <string name="current_role">текущая роль</string>
+    <string name="recent_roles">недавние роли</string>
+    <string name="name">Имя</string>
+    <string name="description">описание</string>
+    <string name="tasks">Задачи</string>
+    <string name="organizations">Организации</string>
+    <string name="there_are_no_current_tasks">Нет новых задач</string>
+    <string name="add_org_button_description">добавление организаций, подструктур и ролей</string>
+    <string name="add_organization">создать огранизацию</string>
+    <string name="add_substructure">создать структуру</string>
+    <string name="add_subordinate_role">добавить роль</string>
 </resources>
