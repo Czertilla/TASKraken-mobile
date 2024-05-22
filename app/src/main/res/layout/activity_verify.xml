@@ -28,7 +28,7 @@
         app:layout_constraintVertical_bias="0.25" />
 
     <TextView
-        android:id="@+id/sendTokenButtonCoolDownTime"
+        android:id="@+id/text_view_cool_down_AV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -78,6 +78,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sendTokenButtonCoolDownTime"
+        app:layout_constraintTop_toTopOf="@+id/text_view_cool_down_AV"
         app:layout_constraintVertical_bias="0.269" />
 </androidx.constraintlayout.widget.ConstraintLayout>
