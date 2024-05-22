@@ -5,9 +5,14 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.ActivityNavigator;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +40,7 @@ public class OrganizationFragment extends Fragment {
     Animation rotateOpen;
 
     Animation rotateClose;
+    NavController navController;
     Animation fromButton;
     Animation toButton;
     FloatingActionButton
@@ -52,7 +59,7 @@ public class OrganizationFragment extends Fragment {
     }
 
 
-    public static OrganizationFragment newInstance(NavController navController) {
+    public static OrganizationFragment newInstance() {
         return new OrganizationFragment();
     }
 
@@ -67,15 +74,15 @@ public class OrganizationFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_organization, container, false);
         context = rootView.getContext();
 
-        addFloatButton = rootView.findViewById(R.id.floatingButtonOrgs);
-        subButtons.add(addOrgButton = rootView.findViewById(R.id.addOrgButton));
-        subButtons.add(addRoleButton = rootView.findViewById(R.id.addRoleButton));
+        setUpNavController();
+        setUpFloatingButtons();
+        setUpAnimations();
+        setUpInterface();
 
-        toButton = AnimationUtils.loadAnimation(context, R.anim.to_button_anim);
-        fromButton = AnimationUtils.loadAnimation(context, R.anim.from_button_anim);
-        rotateOpen = AnimationUtils.loadAnimation(context, R.anim.rotate_open_anim);
-        rotateClose = AnimationUtils.loadAnimation(context, R.anim.rotate_close_anim);
+        return rootView;
+    }
 
+    private void setUpInterface() {
         addFloatButton.setOnClickListener(v -> {
             onAddFloatButtonClicked();
         });
@@ -86,8 +93,8 @@ public class OrganizationFragment extends Fragment {
                     "add Organization in development",
                     Toast.LENGTH_SHORT
             ).show();
-
-//            Navigation.findNavController(rootView).navigate(R.id.navigateToOrgBlankFragment);
+            onAddFloatButtonClicked();
+            navController.navigate(R.id.navigateToOrgBlankFragment);
         });
         addRoleButton.setOnClickListener(v -> {
 //            TODO implement
@@ -97,8 +104,27 @@ public class OrganizationFragment extends Fragment {
                     Toast.LENGTH_SHORT
             ).show();
         });
+    }
 
-        return rootView;
+    private void setUpAnimations() {
+        toButton = AnimationUtils.loadAnimation(context, R.anim.to_button_anim);
+        fromButton = AnimationUtils.loadAnimation(context, R.anim.from_button_anim);
+        rotateOpen = AnimationUtils.loadAnimation(context, R.anim.rotate_open_anim);
+        rotateClose = AnimationUtils.loadAnimation(context, R.anim.rotate_close_anim);
+    }
+
+    private void setUpFloatingButtons() {
+        addFloatButton = rootView.findViewById(R.id.floatingButtonOrgs);
+        subButtons.add(addOrgButton = rootView.findViewById(R.id.addOrgButton));
+        subButtons.add(addRoleButton = rootView.findViewById(R.id.addRoleButton));
+    }
+
+    private void setUpNavController(){
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        NavHostFragment navHostFragment = (NavHostFragment) fragmentManager
+                .findFragmentById(R.id.fragment_container);
+        assert navHostFragment != null;
+        navController = navHostFragment.getNavController();
     }
 
     private void onAddFloatButtonClicked(){
