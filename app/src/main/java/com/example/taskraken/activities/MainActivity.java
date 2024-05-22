@@ -136,6 +136,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    class MainNavigationMenuListener implements NavigationView.OnNavigationItemSelectedListener {
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            int id = item.getItemId();
+            if (id == R.id.logOutItem){
+                networkService.getAuthApi().logout().enqueue(new Callback<Object>() {
+
+                    @Override
+                    public void onResponse(
+                            @NonNull Call<Object> call,
+                            @NonNull Response<Object> response) {
+                        if (response.isSuccessful())
+                            MainActivity.this.checkAuth();
+                    }
+
+                    @Override
+                    public void onFailure(
+                            @NonNull Call<Object> call,
+                            @NonNull Throwable t) {
+                        debugTextView.append("\n"+"something gone wrong with server connection");
+                    }
+                });
+                return true;
+            }
+            return false;
+        }
+    }
+
 //    private void getUserFromCache(){
 //        User user = userRepository.getPickedUser();
 //        boolean flag;
