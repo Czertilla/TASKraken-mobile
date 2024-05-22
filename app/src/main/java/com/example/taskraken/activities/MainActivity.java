@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpNetwork(){
         networkService = NetworkService.getInstance();
         usersApi = networkService.getUserApi();
-        debugTextView = this.findViewById(R.id.debugTextView);
+        debugTextView = this.findViewById(R.id.text_view_debug);
     }
 
     private void setUpDatabase(){

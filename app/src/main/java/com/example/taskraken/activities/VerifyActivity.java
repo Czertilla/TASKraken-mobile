@@ -50,7 +50,7 @@ public class VerifyActivity extends Activity {
         coolDownTimer = this.findViewById(R.id.sendTokenButtonCoolDownTime);
         emailField = this.findViewById(R.id.emailVerifyField);
         tokenField = this.findViewById(R.id.verifyTokenField);
-        debugText = this.findViewById(R.id.debugTextView);
+        debugText = this.findViewById(R.id.text_view_debug);
 
         if (email != null) {
             emailField.setText(email);

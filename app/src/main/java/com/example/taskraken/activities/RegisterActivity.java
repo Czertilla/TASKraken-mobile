@@ -44,7 +44,7 @@ public class RegisterActivity extends Activity {
         passwordField = this.findViewById(R.id.passwordRegisterField);
         repeatField = this.findViewById(R.id.passwordRegisterRepeat);
         usernameField = this.findViewById(R.id.usernameRegisterField);
-        debugText = this.findViewById(R.id.debugTextView);
+        debugText = this.findViewById(R.id.text_view_debug);
 
         networkService = NetworkService.getInstance();
         authApi = networkService.getAuthApi();

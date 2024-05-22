@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -104,7 +103,7 @@ public class TasksFragment extends Fragment {
 
     private void setUpTextView() {
         textView = rootView.findViewById(R.id.tasksFragmentEmptyText);
-        debugText = requireActivity().findViewById(R.id.debugTextView);
+        debugText = requireActivity().findViewById(R.id.text_view_debug);
     }
 
 
