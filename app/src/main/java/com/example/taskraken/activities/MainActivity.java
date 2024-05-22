@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         sideMenuButton.setOnClickListener(v -> {
             mainDrawerLayout.openDrawer(GravityCompat.START);
         });
-        navigationView = findViewById(R.id.mainNavigationView);
+        navigationView = findViewById(R.id.navigation_view_main);
         navigationView.setNavigationItemSelectedListener(new MainNavigationMenuListener());
     }
 
