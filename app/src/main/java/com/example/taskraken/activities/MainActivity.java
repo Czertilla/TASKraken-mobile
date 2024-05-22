@@ -72,6 +72,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("CommitTransaction")
+    private void replaceFragment (Fragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
+    }
+
+
+
     private void checkAuth(){
         usersApi.getCurrentUser().enqueue(new Callback<UserRead>() {
             @Override
