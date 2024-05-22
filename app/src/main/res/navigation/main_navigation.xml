@@ -10,6 +10,7 @@
         android:name="com.example.taskraken.fragments.TasksFragment"
         android:label="fragment_tasks"
         tools:layout="@layout/fragment_tasks" />
+
     <fragment
         android:id="@+id/organizationFragment"
         android:name="com.example.taskraken.fragments.OrganizationFragment"
