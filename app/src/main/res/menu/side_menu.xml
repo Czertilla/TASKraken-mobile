@@ -25,7 +25,7 @@
         android:menuCategory="system">
 
         <item
-            android:id="@+id/logOutItem"
+            android:id="@+id/item_logout"
             android:title="@string/logout" />
     </group>
 

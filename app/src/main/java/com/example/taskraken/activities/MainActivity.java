@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
     class MainNavigationMenuListener implements NavigationView.OnNavigationItemSelectedListener {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             int id = item.getItemId();
-            if (id == R.id.logOutItem){
+            if (id == R.id.item_logout){
                 networkService.getAuthApi().logout().enqueue(new Callback<Object>() {
 
                     @Override
