@@ -26,7 +26,7 @@
         android:id="@+id/createOrgBlankFragment"
         android:name="com.example.taskraken.fragments.CreateOrgBlankFragment"
         android:label="fragment_create_org_blank"
-        tools:layout="@layout/fragment_create_org_blank" >
+        tools:layout="@layout/fragment_regist_org" >
         <action
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
