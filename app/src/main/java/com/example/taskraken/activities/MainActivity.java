@@ -2,29 +2,40 @@ package com.example.taskraken.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.taskraken.R;
-import com.example.taskraken.db.LocalDatabase;
-import com.example.taskraken.db.dao.UserDao;
-import com.example.taskraken.db.model.User;
+import com.example.taskraken.adapters.TaskRecyclerAdapter;
 import com.example.taskraken.db.repository.CookieRepository;
 import com.example.taskraken.db.repository.UserRepository;
-import com.example.taskraken.network.api.AuthApi;
+import com.example.taskraken.fragments.OrganizationFragment;
+import com.example.taskraken.fragments.TasksFragment;
 import com.example.taskraken.network.services.NetworkService;
 import com.example.taskraken.network.api.UsersApi;
 import com.example.taskraken.network.schemas.users.UserRead;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,14 +46,28 @@ public class MainActivity extends AppCompatActivity {
     UsersApi usersApi;
     NetworkService networkService;
     UserRepository userRepository;
+    ProgressBar progressBar;
+    ImageView sideMenuButton;
+    NavigationView navigationView;
+    DrawerLayout mainDrawerLayout;
+    RecyclerView taskRecyclerView;
+    TaskRecyclerAdapter taskRecyclerAdapter;
+    BottomNavigationView bottomNavigationView;
+    NavController navController;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setUpDatabase();
         setContentView(R.layout.activity_main);
 
-        setUpDatabase();
+        mainDrawerLayout = findViewById(R.id.mainDrawerLayout);
+        progressBar = findViewById(R.id.progressBar);
+
         setUpNetwork();
+        setUpSideMenu();
+        setUpBottomMenu();
     }
 
     @Override
@@ -54,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         checkAuth();
+        progressBar.setVisibility(ProgressBar.GONE);
     }
 
     private void setUpNetwork(){
