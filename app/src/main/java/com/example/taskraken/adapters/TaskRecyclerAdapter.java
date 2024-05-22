@@ -70,7 +70,7 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
             cardView = itemView.findViewById(R.id.taskCard);
             taskName = itemView.findViewById(R.id.taskName);
             id = itemView.findViewById(R.id.taskId);
-            taskDescription = itemView.findViewById(R.id.taskDescription);
+            taskDescription = itemView.findViewById(R.id.text_view_task_desc);
             timestamps = itemView.findViewById(R.id.taskTimestamps);
         }
     }
