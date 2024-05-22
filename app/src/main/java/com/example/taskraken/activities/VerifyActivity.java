@@ -45,7 +45,7 @@ public class VerifyActivity extends Activity {
         email = intent.getStringExtra("email");
         networkService = NetworkService.getInstance();
         authApi = networkService.getAuthApi();
-        sendButton = this.findViewById(R.id.sendVerifyTokenButton);
+        sendButton = this.findViewById(R.id.button_request_token);
         verifyButton = this.findViewById(R.id.verifyButton);
         coolDownTimer = this.findViewById(R.id.sendTokenButtonCoolDownTime);
         emailField = this.findViewById(R.id.emailVerifyField);
