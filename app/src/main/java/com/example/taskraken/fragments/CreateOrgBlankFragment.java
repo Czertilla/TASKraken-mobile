@@ -1,5 +1,6 @@
 package com.example.taskraken.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,18 +8,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.taskraken.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CreateOrgBlankFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CreateOrgBlankFragment extends Fragment {
-    public CreateOrgBlankFragment() {
-        // Required empty public constructor
-    }
+
+    private Context context;
+    private Spinner roleTemplateSpinner;
+    private View rootView;
+    public CreateOrgBlankFragment() {}
 
     public static CreateOrgBlankFragment newInstance() {
         CreateOrgBlankFragment fragment = new CreateOrgBlankFragment();
@@ -30,10 +30,26 @@ public class CreateOrgBlankFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    private void setUpSpinner(){
+        roleTemplateSpinner = rootView.findViewById(R.id.spinner_role_template);
+        ArrayAdapter adapter = new ArrayAdapter(
+                context,
+                android.R.layout.simple_spinner_item,
+                getResources().getStringArray(R.array.role_templates)
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        roleTemplateSpinner.setAdapter(adapter);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_regist_org, container, false);
+        rootView = inflater.inflate(R.layout.fragment_regist_org, container, false);
+        context = rootView.getContext();
+
+        setUpSpinner();
+
+        return rootView;
     }
 }
