@@ -167,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
             ) {
                 debugTextView.setText("Error occurred while getting request!");
                 t.printStackTrace();
-
             }
         });
     }
