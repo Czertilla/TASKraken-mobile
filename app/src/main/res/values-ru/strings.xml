@@ -23,4 +23,8 @@
     <string name="add_organization">создать огранизацию</string>
     <string name="add_substructure">создать структуру</string>
     <string name="add_subordinate_role">добавить роль</string>
+    <string name="register_your_organization">Зарегистрируй свою организацию</string>
+    <string name="organisation_config">свойства организации</string>
+    <string name="ceo_config">свойства генеральгого директора</string>
+    <string name="role_template">шаблон роли</string>
 </resources>
