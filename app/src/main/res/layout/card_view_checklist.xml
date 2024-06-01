@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    android:id="@+id/taskCard"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/checkListCard"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="100dp"
     android:orientation="vertical"
     android:layout_marginVertical="8dp">
 
     <TextView
-        android:id="@+id/taskName"
+        android:id="@+id/text_checklist_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="-20dp"
         android:layout_marginStart="30dp"
-        android:maxLength="35"
         android:textSize="20sp"
         android:text="@string/name"/>
 
     <TextView
-        android:id="@+id/text_view_task_desc"
+        android:id="@+id/text_view_role_org_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="5dp"
-        android:maxLength="50"
         android:layout_marginStart="30dp"
         android:textSize="15sp"
-        android:text="@string/description"/>
+        android:text="@string/organisation"/>
 
     <TextView
-        android:id="@+id/text_view_task_timestamps"
+        android:id="@+id/text_view_role_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_gravity="bottom"
         android:text=""
         android:textSize="13sp"/>
 
     <TextView
-        android:id="@+id/text_view_task_id_CT"
+        android:id="@+id/text_view_role_id_CR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

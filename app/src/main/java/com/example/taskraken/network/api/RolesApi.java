@@ -1,21 +1,35 @@
 package com.example.taskraken.network.api;
 
+import com.example.taskraken.network.schemas.roles.RolePreview;
+import com.example.taskraken.network.schemas.roles.RolesPreviewPagination;
 import com.example.taskraken.network.schemas.structs.RegistOrgResponse;
-import com.example.taskraken.network.schemas.tasks.TaskPreviewPagination;
+
+import java.util.UUID;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface StructsApi {
-    String prefix = "/struct";
+public interface RolesApi {
+    String prefix = "/role";
 
-    @POST(prefix+"/regist")
-    Call<RegistOrgResponse> registOrganization(
+
+    @GET(prefix+"/my-roles")
+    Call<RolesPreviewPagination> myRoles(
+            @Query("page") int page,
+            @Query("size") int size
+    );
+
+    @GET(prefix+"/{role_id}/select")
+    Call<Object> selectRole(
+            @Path("role_id") UUID role_id
+    );
+
+    @POST(prefix + "/create")
+    Call<Object> createSubordinate(
             @Query("name") String name,
-            @Query("desctription") String description,
-            @Query("gen_dir_name") String genDirName,
             @Query("template") String template,
             @Query("can_create_substructures") String canCreateSubstructures,
             @Query("can_create_subordinates") String canCreateSubordinates,
@@ -26,5 +40,8 @@ public interface StructsApi {
             @Query("can_create_project") Boolean canCreateProject,
             @Query("can_edit_other_rights") String canEditOtherRights,
             @Query("can_edit_oneself_rights") Boolean canEditOneselfRights
-            );
+    );
+
+    @GET(prefix + "/search")
+    Call<RolesPreviewPagination> all();
 }

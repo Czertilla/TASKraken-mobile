@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CreateOrgBlankFragment">
+    tools:context=".fragments.AssignmentPageFragment">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,25 +18,25 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_regist_org_title"
+                android:id="@+id/text_assignment_page_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/allerta"
-                android:text="@string/register_your_organization"
+                android:text="@string/task"
                 android:textSize="22sp" />
 
 
             <TextView
-                android:id="@+id/text_org_subtitle"
+                android:id="@+id/text_asssignment_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:paddingTop="64dp"
-                android:text="@string/organisation_config" />
+                android:text="@string/text_task_properties" />
 
             <View
                 android:id="@+id/divider"
@@ -45,7 +45,7 @@
                 android:background="?android:attr/listDivider" />
 
             <EditText
-                android:id="@+id/editText_org_name"
+                android:id="@+id/editText_task_name_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -59,36 +59,36 @@
                 tools:ignore="LabelFor" />
 
             <EditText
-                android:id="@+id/editText_org_desc"
+                android:id="@+id/editText_name_desc_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:layout_marginTop="32dp"
                 android:autofillHints=""
                 android:ems="10"
-                android:hint="@string/description"
+                android:text="@string/description"
                 android:inputType="textMultiLine"
                 android:minHeight="48dp"
                 tools:ignore="LabelFor" />
 
             <TextView
-                android:id="@+id/text_gendir_subtitle"
+                android:id="@+id/text_checklists_subtitle_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:paddingTop="64dp"
-                android:text="@string/ceo_config" />
+                android:text="@string/checklists" />
 
             <View
-                android:id="@+id/divider2"
+                android:id="@+id/divider2_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
 
             <EditText
-                android:id="@+id/editText_gendir_name"
+                android:id="@+id/editText_gendir_name_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -101,14 +101,14 @@
                 tools:ignore="LabelFor" />
 
             <Spinner
-                android:id="@+id/spinner_role_template"
+                android:id="@+id/spinner_role_template_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:layout_marginTop="32dp"
                 android:minHeight="48dp"/>
             <TextView
-                android:id="@+id/text_role_template_hint"
+                android:id="@+id/text_role_template_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -117,14 +117,14 @@
 
 
             <Spinner
-                android:id="@+id/spinner_create_substruct"
+                android:id="@+id/spinner_create_substruct_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:layout_marginTop="32dp"
                 android:minHeight="48dp"/>
             <TextView
-                android:id="@+id/text_create_substruct_hint"
+                android:id="@+id/text_create_substruct_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -133,14 +133,14 @@
 
 
             <Spinner
-                android:id="@+id/spinner_create_subordinates"
+                android:id="@+id/spinner_create_subordinates_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:layout_marginTop="32dp"
                 android:minHeight="48dp"/>
             <TextView
-                android:id="@+id/text_create_subordinates_hint"
+                android:id="@+id/text_create_subordinates_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -149,14 +149,14 @@
 
 
             <Spinner
-                android:id="@+id/spinner_send_task"
+                android:id="@+id/spinner_send_task_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:layout_marginTop="32dp"
                 android:minHeight="48dp"/>
             <TextView
-                android:id="@+id/text_send_task_hint"
+                android:id="@+id/text_send_task_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -165,7 +165,7 @@
 
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_send_report"
+                android:id="@+id/switch_send_report_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -174,7 +174,7 @@
                 android:text="@string/send_reports"
                 android:theme="@style/SCBSwitch"/>
             <TextView
-                android:id="@+id/text_send_report_hint"
+                android:id="@+id/text_send_report_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -183,14 +183,14 @@
 
 
             <Spinner
-                android:id="@+id/spinner_send_petition"
+                android:id="@+id/spinner_send_petition_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:layout_marginTop="32dp"
                 android:minHeight="48dp" />
             <TextView
-                android:id="@+id/text_send_petition_hint"
+                android:id="@+id/text_send_petition_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -199,14 +199,14 @@
 
 
             <Spinner
-                android:id="@+id/spinner_reject_task"
+                android:id="@+id/spinner_reject_task_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:layout_marginTop="32dp"
                 android:minHeight="48dp"/>
             <TextView
-                android:id="@+id/text_reject_task_hint"
+                android:id="@+id/text_reject_task_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -215,7 +215,7 @@
 
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_create_project"
+                android:id="@+id/switch_create_project_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -224,7 +224,7 @@
                 android:text="@string/create_project"
                 android:theme="@style/SCBSwitch"/>
             <TextView
-                android:id="@+id/text_create_project_hint"
+                android:id="@+id/text_create_project_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -233,14 +233,14 @@
 
 
             <Spinner
-                android:id="@+id/spinner_edit_other_rights"
+                android:id="@+id/spinner_edit_other_rights_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:layout_marginTop="32dp"
                 android:minHeight="48dp"/>
             <TextView
-                android:id="@+id/text_edit_other_rights_hint"
+                android:id="@+id/text_edit_other_rights_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -249,7 +249,7 @@
 
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_edit_oneself_rights"
+                android:id="@+id/switch_edit_oneself_rights_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
@@ -258,20 +258,21 @@
                 android:text="@string/edit_oneself_rights"
                 android:theme="@style/SCBSwitch"/>
             <TextView
-                android:id="@+id/text_edit_oneself_rights_hint"
+                android:id="@+id/text_edit_oneself_rights_hint_FAsP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
                 android:hint="@string/edit_oneself_rights_role_right_hint"
                 android:textColorHint="#546E7A" />
-
-            <Button
-                android:id="@+id/button_register_org"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="48dp"
-                android:text="@string/registerButtonText" />
         </LinearLayout>
     </ScrollView>
 
+
+    <Button
+        android:id="@+id/button_EDIT_TASK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="20dp"
+        android:text="@string/edit" />
 </FrameLayout>

@@ -16,7 +16,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.taskraken.R;
 import com.example.taskraken.adapters.TaskRecyclerAdapter;
@@ -25,6 +28,7 @@ import com.example.taskraken.network.schemas.pagination.Pagination;
 import com.example.taskraken.network.schemas.tasks.TaskPreview;
 import com.example.taskraken.network.schemas.tasks.TaskPreviewPagination;
 import com.example.taskraken.network.services.NetworkService;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +39,14 @@ import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link TasksFragment#newInstance} factory method to
+ * Use the {@link AssignmentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TasksFragment extends Fragment {
-
+public class AssignmentFragment extends Fragment {
+    Context context;
     View rootView;
 
     SwipeRefreshLayout swipeRefreshLayout;
-    Context context;
     RecyclerView tasksRecyclerView;
     TaskRecyclerAdapter recyclerAdapter;
     List<TaskPreview> tasksList;
@@ -56,33 +59,102 @@ public class TasksFragment extends Fragment {
     int pageSize;
 
     int total;
-    private NavController navController;
 
-    public TasksFragment() {
+    Animation rotateOpen;
 
+    Animation rotateClose;
+    NavController navController;
+    Animation fromButton;
+    Animation toButton;
+    FloatingActionButton
+            addFloatButton,
+            addOrgButton,
+            addRoleButton,
+            addProjectButton,
+            addTaskButton
+        ;
+
+    List<FloatingActionButton> subButtons;
+
+    boolean clicked = true;
+
+    public AssignmentFragment() {
         networkService = NetworkService.getInstance();
         tasksApi = networkService.getTaskApi();
         pageSize = 10;
         tasksList = new ArrayList<>();
+        subButtons = new ArrayList<>();
     }
 
 
-    public static TasksFragment newInstance() {
-        TasksFragment fragment = new TasksFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-        return fragment;
+    public static AssignmentFragment newInstance() {
+        return new AssignmentFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_assignments, container, false);
+        context = rootView.getContext();
+
+        setUpNavController();
+        setUpFloatingButtons();
+        setUpAnimations();
+        setUpInterface();
+
+        setUpSwipe();
+
+        tasksRecyclerView = rootView.findViewById(R.id.recycler_view_assignments);
+        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        tasksRecyclerView.setAdapter(recyclerAdapter = new TaskRecyclerAdapter(tasksList, navController, true));
+        setTasksResponse();
+
+        return rootView;
+    }
+
+    private void setUpInterface() {
+        textView = rootView.findViewById(R.id.text_no_assignments_message);
+        addFloatButton.setOnClickListener(v -> {
+            onAddFloatButtonClicked();
+        });
+        addOrgButton.setOnClickListener(v -> {
+            onAddFloatButtonClicked();
+            navController.navigate(R.id.navigateToOrgBlankFragment);
+        });
+        addProjectButton.setOnClickListener(v -> {
+            navController.navigate(R.id.action_fragment_assignments_to_addProjectFragment);
+        });
+        addRoleButton.setOnClickListener(v -> {
+            navController.navigate(R.id.action_fragment_assignments_to_createSubordinateFragment);
+            Toast.makeText(
+                    context,
+                    "add Roles in development",
+                    Toast.LENGTH_SHORT
+            ).show();
+        });
+        addTaskButton.setOnClickListener(v -> {
+            navController.navigate(R.id.action_fragment_assignments_to_addTaskFragment);
+        });
+    }
+
+    private void setUpAnimations() {
+        toButton = AnimationUtils.loadAnimation(context, R.anim.to_button_anim);
+        fromButton = AnimationUtils.loadAnimation(context, R.anim.from_button_anim);
+        rotateOpen = AnimationUtils.loadAnimation(context, R.anim.rotate_open_anim);
+        rotateClose = AnimationUtils.loadAnimation(context, R.anim.rotate_close_anim);
+    }
+
+    private void setUpFloatingButtons() {
+        addFloatButton = rootView.findViewById(R.id.floating_button_add_FAs);
+        subButtons.add(addOrgButton = rootView.findViewById(R.id.button_regist_org_nav));
+        subButtons.add(addProjectButton = rootView.findViewById(R.id.button_create_project));
+        subButtons.add(addRoleButton = rootView.findViewById(R.id.button_create_subordinate_nav));
+        subButtons.add(addTaskButton = rootView.findViewById(R.id.button_create_new_task));
     }
 
     private void setUpNavController(){
@@ -93,26 +165,18 @@ public class TasksFragment extends Fragment {
         navController = navHostFragment.getNavController();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_tasks, container, false);
-        context = rootView.getContext();
-
-        textView = rootView.findViewById(R.id.text_view_no_tasks);
-
-        setUpSwipe();
-        setUpNavController();
-
-        tasksRecyclerView = rootView.findViewById(R.id.recycler_view_tasks);
-        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        tasksRecyclerView.setAdapter(recyclerAdapter = new TaskRecyclerAdapter(tasksList, navController, false));
-        setTasksResponse();
-        return rootView;
+    private void onAddFloatButtonClicked(){
+        subButtons.forEach(b -> {
+            b.setAnimation(clicked ? fromButton : toButton);
+            b.setVisibility(clicked ? View.VISIBLE: View.INVISIBLE);
+            b.setClickable(clicked);
+        });
+        addFloatButton.setAnimation(clicked ? rotateOpen : rotateClose);
+        clicked = !clicked;
     }
 
     private void setUpSwipe() {
-        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_tasks);
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_assignments);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             setTasksResponse();
             swipeRefreshLayout.setRefreshing(false);
@@ -128,7 +192,7 @@ public class TasksFragment extends Fragment {
     }
 
     private void setTasksResponse(int page, int size){
-        tasksApi.myTasks(page, size).enqueue(new Callback<TaskPreviewPagination>() {
+        tasksApi.myAssignments(page, size).enqueue(new Callback<TaskPreviewPagination>() {
             @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
             @Override
             public void onResponse(
@@ -172,4 +236,5 @@ public class TasksFragment extends Fragment {
             }
         });
     }
+
 }

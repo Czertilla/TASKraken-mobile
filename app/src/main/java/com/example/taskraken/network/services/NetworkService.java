@@ -1,6 +1,9 @@
 package com.example.taskraken.network.services;
 
 import com.example.taskraken.network.api.AuthApi;
+import com.example.taskraken.network.api.ProjectsApi;
+import com.example.taskraken.network.api.RolesApi;
+import com.example.taskraken.network.api.StructsApi;
 import com.example.taskraken.network.api.TasksApi;
 import com.example.taskraken.network.api.UsersApi;
 
@@ -49,7 +52,13 @@ public class NetworkService {
         return mRetrofit.create(TasksApi.class);
     }
 
+    public StructsApi getStructApi(){return mRetrofit.create(StructsApi.class);}
+
+    public RolesApi getRoleApi(){return mRetrofit.create(RolesApi.class);}
+
+    public ProjectsApi getProjectApi() {return mRetrofit.create(ProjectsApi.class);}
     public String getBaseUrl(){
         return BASE_URL;
     }
+
 }

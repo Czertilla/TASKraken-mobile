@@ -17,7 +17,7 @@ public class TaskPreview {
 
     @SerializedName("organization_id")
     @Expose
-    private UUID organization_id;
+    private UUID organizationId;
 
     @SerializedName("description")
     @Expose
@@ -29,11 +29,11 @@ public class TaskPreview {
 
     @SerializedName("created_at")
     @Expose
-    private Date created_at;
+    private Date createdAt;
 
     @SerializedName("edited_at")
     @Expose
-    private Date edited_at;
+    private Date editedAt;
 
     public UUID getId() {
         return id;
@@ -43,16 +43,16 @@ public class TaskPreview {
         return name;
     }
 
-    public UUID getOrganization_id() {
-        return organization_id;
+    public UUID getOrganizationId() {
+        return organizationId;
     }
 
 
-    public Date getCreated_at() {
-        return created_at;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public Date getEdited_at() {
-        return edited_at;
+    public Date getEditedAt() {
+        return editedAt;
     }
 }
