@@ -27,22 +27,21 @@ import com.example.taskraken.network.api.StructsApi;
 import com.example.taskraken.network.schemas.structs.RegistOrgResponse;
 import com.example.taskraken.network.services.NetworkService;
 
-import java.util.Objects;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateOrgBlankFragment extends Fragment {
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link CreateSubordinateFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class CreateSubordinateFragment extends Fragment {
     private Context context;
 
     private NetworkService networkService;
-    private StructsApi structApi;
 
-    private EditText org_name
-            ,description
-            ,gendir_name;
+    private EditText name;
 
     private TextView debugText;
     private Spinner roleTemplateSpinner
@@ -62,10 +61,10 @@ public class CreateOrgBlankFragment extends Fragment {
     private RolesApi roleApi;
     private NavController navController;
 
-    public CreateOrgBlankFragment() {}
+    public CreateSubordinateFragment() {}
 
-    public static CreateOrgBlankFragment newInstance() {
-        CreateOrgBlankFragment fragment = new CreateOrgBlankFragment();
+    public static CreateSubordinateFragment newInstance() {
+        CreateSubordinateFragment fragment = new CreateSubordinateFragment();
         return fragment;
     }
 
@@ -75,13 +74,13 @@ public class CreateOrgBlankFragment extends Fragment {
     }
 
     private void setUpSwitch() {
-        canSendReportSwitch = rootView.findViewById(R.id.switch_send_report);
-        canEditOneselfRightsSwitch = rootView.findViewById(R.id.switch_edit_oneself_rights);
-        canCreateProjectSwitch = rootView.findViewById(R.id.switch_create_project);
+        canSendReportSwitch = rootView.findViewById(R.id.switch_send_report_FCS);
+        canEditOneselfRightsSwitch = rootView.findViewById(R.id.switch_edit_oneself_rights_FCS);
+        canCreateProjectSwitch = rootView.findViewById(R.id.switch_create_project_FCS);
     }
 
     private void setUpSpinner(){
-        roleTemplateSpinner = rootView.findViewById(R.id.spinner_role_template);
+        roleTemplateSpinner = rootView.findViewById(R.id.spinner_role_template_FCS);
         ArrayAdapter roleTemplateAdapter = new ArrayAdapter(
                 context,
                 android.R.layout.simple_spinner_item,
@@ -92,7 +91,7 @@ public class CreateOrgBlankFragment extends Fragment {
         );
         roleTemplateSpinner.setAdapter(roleTemplateAdapter);
 
-        createSubstructRightSpinner = rootView.findViewById(R.id.spinner_create_substruct);
+        createSubstructRightSpinner = rootView.findViewById(R.id.spinner_create_substruct_FCS);
         ArrayAdapter createSubStructAdapter = new ArrayAdapter(
                 context,
                 android.R.layout.simple_spinner_item,
@@ -103,7 +102,7 @@ public class CreateOrgBlankFragment extends Fragment {
         );
         createSubstructRightSpinner.setAdapter(createSubStructAdapter);
 
-        createSubordinateRightSpinner = rootView.findViewById(R.id.spinner_create_subordinates);
+        createSubordinateRightSpinner = rootView.findViewById(R.id.spinner_create_subordinates_FCS);
         ArrayAdapter createSubOrdinateAdapter = new ArrayAdapter(
                 context,
                 android.R.layout.simple_spinner_item,
@@ -114,7 +113,7 @@ public class CreateOrgBlankFragment extends Fragment {
         );
         createSubordinateRightSpinner.setAdapter(createSubOrdinateAdapter);
 
-        sendTaskRightSpinner = rootView.findViewById(R.id.spinner_send_task);
+        sendTaskRightSpinner = rootView.findViewById(R.id.spinner_send_task_FCS);
         ArrayAdapter sendTaskRightAdapter = new ArrayAdapter(
                 context,
                 android.R.layout.simple_spinner_item,
@@ -126,7 +125,7 @@ public class CreateOrgBlankFragment extends Fragment {
         sendTaskRightSpinner.setAdapter(sendTaskRightAdapter);
 
 
-        sendPetitionRightSpinner = rootView.findViewById(R.id.spinner_send_petition);
+        sendPetitionRightSpinner = rootView.findViewById(R.id.spinner_send_petition_FCS);
         ArrayAdapter sendPetitionAdapter = new ArrayAdapter(
                 context,
                 android.R.layout.simple_spinner_item,
@@ -137,7 +136,7 @@ public class CreateOrgBlankFragment extends Fragment {
         );
         sendPetitionRightSpinner.setAdapter(sendPetitionAdapter);
 
-        rejectTaskRigthSpinner = rootView.findViewById(R.id.spinner_reject_task);
+        rejectTaskRigthSpinner = rootView.findViewById(R.id.spinner_reject_task_FCS);
         ArrayAdapter rejectTaskAdapter = new ArrayAdapter(
                 context,
                 android.R.layout.simple_spinner_item,
@@ -148,7 +147,7 @@ public class CreateOrgBlankFragment extends Fragment {
         );
         rejectTaskRigthSpinner.setAdapter(rejectTaskAdapter);
 
-        editOtherRightsRightSpinner = rootView.findViewById(R.id.spinner_edit_other_rights);
+        editOtherRightsRightSpinner = rootView.findViewById(R.id.spinner_edit_other_rights_FCS);
         ArrayAdapter editOtherRightsAdapter = new ArrayAdapter(
                 context,
                 android.R.layout.simple_spinner_item,
@@ -228,12 +227,10 @@ public class CreateOrgBlankFragment extends Fragment {
     }
 
     public void setUpButton(){
-        registButton = rootView.findViewById(R.id.button_register_org);
+        registButton = rootView.findViewById(R.id.button_create_subordinate);
         registButton.setOnClickListener(v -> {
-            structApi.registOrganization(
-                    org_name.getText().toString(),
-                    description.getText().toString(),
-                    gendir_name.getText().toString(),
+            roleApi.createSubordinate(
+                    name.getText().toString(),
                     roleTemplateSpinner.getSelectedItem().toString(),
                     createSubstructRightSpinner.getSelectedItem().toString(),
                     createSubordinateRightSpinner.getSelectedItem().toString(),
@@ -244,18 +241,17 @@ public class CreateOrgBlankFragment extends Fragment {
                     canCreateProjectSwitch.isChecked(),
                     editOtherRightsRightSpinner.getSelectedItem().toString(),
                     canEditOneselfRightsSwitch.isChecked()
-            ).enqueue(new Callback<RegistOrgResponse>() {
+            ).enqueue(new Callback<Object>() {
                 @Override
                 public void onResponse(
-                        @NonNull Call<RegistOrgResponse> call,
-                        @NonNull Response<RegistOrgResponse> response
+                        @NonNull Call<Object> call,
+                        @NonNull Response<Object> response
                 ) {
 //                    TODO implement
 //                    debugText.setText(response.headers().toMultimap().toString());
 //                    debugText.append("\n"+response.code());
                     if (response.isSuccessful() & response.body() != null){
-                        roleApi.selectRole(response.body().getGenDirId());
-                        navController.navigate(R.id.navigateToOrganizationFragment);
+                        navController.navigate(R.id.action_createSubordinateFragment_to_fragment_assignments);
                     }
 //                    else if (response.errorBody() != null){
 //                        debugText.append(response.errorBody().toString());
@@ -268,7 +264,7 @@ public class CreateOrgBlankFragment extends Fragment {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onFailure(
-                        @NonNull Call<RegistOrgResponse> call,
+                        @NonNull Call<Object> call,
                         @NonNull Throwable throwable
                 ) {
                     debugText.setText("Error occurred while getting request!");
@@ -290,14 +286,14 @@ public class CreateOrgBlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_regist_org, container, false);
+        rootView = inflater.inflate(R.layout.fragment_create_subordinate, container, false);
         context = rootView.getContext();
 
         setUpNavController();
         setUpSwitch();
         setUpText();
         setUpSpinner();
-        roleTemplateSpinner.setSelection(2);
+        roleTemplateSpinner.setSelection(0);
         setUpNetwork();
         setUpButton();
 
@@ -305,16 +301,12 @@ public class CreateOrgBlankFragment extends Fragment {
     }
 
     private void setUpText() {
-        org_name = rootView.findViewById(R.id.editText_org_name);
-        description = rootView.findViewById(R.id.editText_org_desc);
-        gendir_name = rootView.findViewById(R.id.editText_gendir_name);
+        name = rootView.findViewById(R.id.name_FCS);
 //        debugText = getView().findViewById(R.id.text_view_debug_AM);
     }
 
     private void setUpNetwork() {
         networkService = NetworkService.getInstance();
-        structApi = networkService.getStructApi();
         roleApi = networkService.getRoleApi();
     }
 }
-

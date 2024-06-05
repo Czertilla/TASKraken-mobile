@@ -4,10 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,7 +20,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.taskraken.R;
-import com.example.taskraken.adapters.TaskRecyclerAdapter;
 import com.example.taskraken.db.repository.CookieRepository;
 import com.example.taskraken.db.repository.UserRepository;
 import com.example.taskraken.network.services.NetworkService;
@@ -46,10 +46,9 @@ public class MainActivity extends AppCompatActivity {
     ImageView sideMenuButton;
     NavigationView navigationView;
     DrawerLayout mainDrawerLayout;
-    RecyclerView taskRecyclerView;
-    TaskRecyclerAdapter taskRecyclerAdapter;
-    BottomNavigationView bottomNavigationView;
     NavController navController;
+
+    Fragment rolesFragment;
 
 
     @Override
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar_loading);
 
         setUpNetwork();
+        setUpNavigation();
         setUpSideMenu();
         setUpBottomMenu();
     }
@@ -96,14 +96,19 @@ public class MainActivity extends AppCompatActivity {
             mainDrawerLayout.openDrawer(GravityCompat.START);
         });
         navigationView = findViewById(R.id.navigation_view_main);
+//        rolesFragment = new Role();
         navigationView.setNavigationItemSelectedListener(new MainNavigationMenuListener());
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
-    private void setUpBottomMenu(){
+    private void setUpNavigation(){
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragment_container);
         assert navHostFragment != null;
-        NavController navController = navHostFragment.getNavController();
+        navController = navHostFragment.getNavController();
+    }
+
+    private void setUpBottomMenu(){
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_view);
         NavigationUI.setupWithNavController(bottomNav, navController);
     }
@@ -167,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
             ) {
                 debugTextView.setText("Error occurred while getting request!");
                 t.printStackTrace();
-
             }
         });
     }
@@ -194,6 +198,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 return true;
+//            } else if (id == R.id.fragment_my_roles) {
+//                rolesFragment.setArguments(getIntent().getExtras());
+//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                ft.replace(R.id.fragment_container, rolesFragment);
+//                ft.commit();
             }
             return false;
         }

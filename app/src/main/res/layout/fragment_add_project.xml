@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddProjectFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_create_project"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/allerta"
+                android:text="@string/create_your_project"
+                android:textSize="22sp" />
+
+
+            <TextView
+                android:id="@+id/text_project_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:fontFamily="@font/allerta"
+                android:gravity="center"
+                android:paddingTop="64dp"
+                android:text="@string/project_config" />
+
+            <EditText
+                android:id="@+id/editText_project_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="32dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:text="@string/name"
+                android:textSize="22sp"
+                tools:ignore="LabelFor" />
+
+
+            <EditText
+                android:id="@+id/editText_project_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="32dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:text="@string/description"
+                android:textSize="22sp"
+                tools:ignore="LabelFor" />
+
+            <DatePicker
+                android:id="@+id/date_picker_deadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="32dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:text="@string/description"
+                android:textSize="22sp"
+                tools:ignore="LabelFor" />
+
+            <Button
+                android:id="@+id/button_create_project_FaP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="48dp"
+                android:text="@string/create_project" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

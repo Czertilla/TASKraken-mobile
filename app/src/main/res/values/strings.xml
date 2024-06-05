@@ -25,5 +25,39 @@
     <string name="add_substructure">add substructure</string>
     <string name="add_subordinate_role">add subordinate role</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="register_your_organization">Register your organization</string>
+    <string name="organisation_config">organisation config</string>
+    <string name="ceo_config">CEO config</string>
+    <string name="role_template">role template</string>
+    <string name="create_substruct_role_right_hint">where role will can create structures</string>
+    <string name="create_subordinates_role_right_hint">where a role can create subordinate roles</string>
+    <string name="send_task_role_right_hint">where the role will be able to send tasks</string>
+    <string name="send_petition_role_right_hint">will the role be able to send petitions</string>
+    <string name="reject_task_role_right_hint">whose tasks will the role be able to reject</string>
+    <string name="can_send_petition">can send petition</string>
+    <string name="edit_other_rights_role_right_hint">where a role can change the rights of other roles</string>
+    <string name="edit_oneself_rights_role_right_hint">will the role be able to change its own rights</string>
+    <string name="edit_oneself_rights">own rights</string>
+    <string name="send_report_hint">will the role be able to send reports</string>
+    <string name="send_reports">send reports</string>
+    <string name="create_project_hint">will the role be able to create projects</string>
+    <string name="create_project">create projects\n</string>
+    <string name="assignments">assignments</string>
+    <string name="there_is_no_assignments_yet">there is no assignments yet</string>
+    <string name="no_roles">you have not any roles yet</string>
+    <string name="organisation">organization</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_new_project">create new project</string>
+    <string name="create_your_project">Create your project</string>
+    <string name="project_config">project config</string>
+    <string name="role_config">role config</string>
+    <string name="add_new_task">Add new task</string>
+    <string name="task_config">task config</string>
+    <string name="create_task">add task</string>
+    <string name="select_the_responsible_role">Select the responsible role</string>
+    <string name="task">Task</string>
+    <string name="text_task_properties">task properties</string>
+    <string name="checklists">checklists</string>
+    <string name="edit">Edit</string>
 </resources>

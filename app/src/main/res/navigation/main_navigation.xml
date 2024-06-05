@@ -9,18 +9,34 @@
         android:id="@+id/fragment_tasks"
         android:name="com.example.taskraken.fragments.TasksFragment"
         android:label="fragment_tasks"
-        tools:layout="@layout/fragment_tasks" />
+        tools:layout="@layout/fragment_tasks" >
+        <action
+            android:id="@+id/action_fragment_tasks_to_taskPageFragment"
+            app:destination="@id/taskPageFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/fragment_organizations"
-        android:name="com.example.taskraken.fragments.OrganizationFragment"
+        android:id="@+id/fragment_assignments"
+        android:name="com.example.taskraken.fragments.AssignmentFragment"
         android:label="fragment_organization"
-        tools:layout="@layout/fragment_organizations" >
+        tools:layout="@layout/fragment_assignments" >
         <action
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             android:id="@+id/navigateToOrgBlankFragment"
             app:destination="@id/createOrgBlankFragment" />
+        <action
+            android:id="@+id/action_fragment_assignments_to_addProjectFragment"
+            app:destination="@id/addProjectFragment" />
+        <action
+            android:id="@+id/action_fragment_assignments_to_createSubordinateFragment"
+            app:destination="@id/createSubordinateFragment" />
+        <action
+            android:id="@+id/action_fragment_assignments_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+        <action
+            android:id="@+id/action_fragment_assignments_to_assignmentPageFragment"
+            app:destination="@id/assignmentPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/createOrgBlankFragment"
@@ -31,6 +47,56 @@
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             android:id="@+id/navigateToOrganizationFragment"
-            app:destination="@id/fragment_organizations" />
+            app:destination="@id/fragment_assignments" />
     </fragment>
-</navigation>
+    <fragment
+        android:id="@+id/fragment_my_roles"
+        android:name="com.example.taskraken.fragments.RolesFragment"
+        android:label="fragment_my_roles"
+        tools:layout="@layout/fragment_my_roles" />
+    <fragment
+        android:id="@+id/addProjectFragment"
+        android:name="com.example.taskraken.fragments.AddProjectFragment"
+        android:label="fragment_add_project"
+        tools:layout="@layout/fragment_add_project" >
+        <action
+            android:id="@+id/action_addProjectFragment_to_fragment_assignments"
+            app:destination="@id/fragment_assignments" />
+    </fragment>
+    <fragment
+        android:id="@+id/createSubordinateFragment"
+        android:name="com.example.taskraken.fragments.CreateSubordinateFragment"
+        android:label="fragment_create_subordinate"
+        tools:layout="@layout/fragment_create_subordinate" >
+        <action
+            android:id="@+id/action_createSubordinateFragment_to_fragment_assignments"
+            app:destination="@id/fragment_assignments" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="com.example.taskraken.fragments.AddTaskFragment"
+        android:label="fragment_add_task"
+        tools:layout="@layout/fragment_add_task" >
+        <action
+            android:id="@+id/action_addTaskFragment_to_fragment_assignments"
+            app:destination="@id/fragment_assignments" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignmentPageFragment"
+        android:name="com.example.taskraken.fragments.AssignmentPageFragment"
+        android:label="fragment_assignment_page"
+        tools:layout="@layout/fragment_assignment_page" >
+        <action
+            android:id="@+id/action_assignmentPageFragment_to_fragment_assignments"
+            app:destination="@id/fragment_assignments" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskPageFragment"
+        android:name="com.example.taskraken.fragments.TaskPageFragment"
+        android:label="fragment_task_page"
+        tools:layout="@layout/fragment_task_page" >
+        <action
+            android:id="@+id/action_taskPageFragment_to_fragment_tasks"
+            app:destination="@id/fragment_tasks" />
+    </fragment>
+</navigation>   

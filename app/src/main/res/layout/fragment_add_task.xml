@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddTaskFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_add_task"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/allerta"
+                android:text="@string/add_new_task"
+                android:textSize="22sp" />
+
+
+            <TextView
+                android:id="@+id/text_task_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:fontFamily="@font/allerta"
+                android:gravity="center"
+                android:paddingTop="64dp"
+                android:text="@string/task_config" />
+
+            <EditText
+                android:id="@+id/editText_task_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="32dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:text="@string/name"
+                android:textSize="22sp"
+                tools:ignore="LabelFor" />
+
+
+            <EditText
+                android:id="@+id/editText_task_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="32dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:text="@string/description"
+                android:textSize="22sp"
+                tools:ignore="LabelFor" />
+
+            <Spinner
+                android:id="@+id/spinner_add_responsible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="32dp"
+                android:minHeight="48dp"/>
+            <TextView
+                android:id="@+id/text_pick_responsible_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:hint="@string/select_the_responsible_role"
+                android:textColorHint="#546E7A" />
+
+            <DatePicker
+                android:id="@+id/date_picker_deadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="32dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:text="@string/description"
+                android:textSize="22sp"
+                tools:ignore="LabelFor" />
+
+            <Button
+                android:id="@+id/button_create_task_FaT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="48dp"
+                android:text="@string/create_task" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

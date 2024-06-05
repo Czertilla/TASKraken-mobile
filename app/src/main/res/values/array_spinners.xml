@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="role_templates">
+        <item>ordinary</item>
+        <item>head</item>
+        <item>gendir</item>
+        <item>hr</item>
+    </string-array>
+
+    <string-array name="create_substruct_rights">
+        <item>org</item>
+        <item>overstruct</item>
+        <item>struct</item>
+        <item>false</item>
+    </string-array>
+    
+    <string-array name="create_subordinates_rights">
+        <item>org</item>
+        <item>overstruct</item>
+        <item>level</item>
+        <item>struct</item>
+        <item>downstream</item>
+        <item>subord</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="send_task_rights">
+        <item>everyone</item>
+        <item>org</item>
+        <item>downstream</item>
+        <item>direct</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="send_petition_rights">
+        <item>everyone</item>
+        <item>org</item>
+        <item>upstream</item>
+        <item>struct</item>
+        <item>direct</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="reject_task_rights">
+        <item>everyone</item>
+        <item>struct</item>
+        <item>undirect</item>
+        <item>level</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="edit_other_rights">
+        <item>org</item>
+        <item>struct</item>
+        <item>direct</item>
+        <item>false</item>
+    </string-array>
+</resources>

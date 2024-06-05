@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -19,11 +20,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.taskraken.R;
-import com.example.taskraken.adapters.TaskRecyclerAdapter;
-import com.example.taskraken.network.api.TasksApi;
+import com.example.taskraken.adapters.RoleRecyclerAdapter;
+import com.example.taskraken.network.api.RolesApi;
 import com.example.taskraken.network.schemas.pagination.Pagination;
-import com.example.taskraken.network.schemas.tasks.TaskPreview;
-import com.example.taskraken.network.schemas.tasks.TaskPreviewPagination;
+import com.example.taskraken.network.schemas.roles.RolePreview;
+import com.example.taskraken.network.schemas.roles.RolesPreviewPagination;
 import com.example.taskraken.network.services.NetworkService;
 
 import java.util.ArrayList;
@@ -35,44 +36,56 @@ import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link TasksFragment#newInstance} factory method to
+ * Use the {@link RolesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TasksFragment extends Fragment {
+public class RolesFragment extends Fragment {
 
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
     View rootView;
 
     SwipeRefreshLayout swipeRefreshLayout;
     Context context;
-    RecyclerView tasksRecyclerView;
-    TaskRecyclerAdapter recyclerAdapter;
-    List<TaskPreview> tasksList;
+    RecyclerView rolesRecyclerView;
+    RoleRecyclerAdapter recyclerAdapter;
+    List<RolePreview> rolesList;
 
     NetworkService networkService;
-    TasksApi tasksApi;
+    RolesApi rolesApi;
 
     TextView textView;
 
     int pageSize;
 
     int total;
-    private NavController navController;
 
-    public TasksFragment() {
-
+    public RolesFragment() {
         networkService = NetworkService.getInstance();
-        tasksApi = networkService.getTaskApi();
+        rolesApi = networkService.getRoleApi();
         pageSize = 10;
-        tasksList = new ArrayList<>();
+        rolesList = new ArrayList<>();
     }
 
-
-    public static TasksFragment newInstance() {
-        TasksFragment fragment = new TasksFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment Role.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static RolesFragment newInstance(String param1, String param2) {
+        RolesFragment fragment = new RolesFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -85,72 +98,64 @@ public class TasksFragment extends Fragment {
 //        }
     }
 
-    private void setUpNavController(){
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        NavHostFragment navHostFragment = (NavHostFragment) fragmentManager
-                .findFragmentById(R.id.fragment_container);
-        assert navHostFragment != null;
-        navController = navHostFragment.getNavController();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_tasks, container, false);
+        rootView = inflater.inflate(R.layout.fragment_my_roles, container, false);
         context = rootView.getContext();
 
-        textView = rootView.findViewById(R.id.text_view_no_tasks);
+        textView = rootView.findViewById(R.id.text_view_no_roles);
 
         setUpSwipe();
-        setUpNavController();
 
-        tasksRecyclerView = rootView.findViewById(R.id.recycler_view_tasks);
-        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        tasksRecyclerView.setAdapter(recyclerAdapter = new TaskRecyclerAdapter(tasksList, navController, false));
-        setTasksResponse();
+        rolesRecyclerView = rootView.findViewById(R.id.recycler_view_roles);
+        rolesRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        OnBackPressedDispatcher back = new OnBackPressedDispatcher();
+        rolesRecyclerView.setAdapter(recyclerAdapter = new RoleRecyclerAdapter(rolesList, back));
+        setRolesResponse();
         return rootView;
     }
 
     private void setUpSwipe() {
-        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_tasks);
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_roles);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            setTasksResponse();
+            setRolesResponse();
             swipeRefreshLayout.setRefreshing(false);
         });
     }
 
-    private void setTasksResponse(){
-        setTasksResponse(0, pageSize);
+    private void setRolesResponse(){
+        setRolesResponse(0, pageSize);
     }
 
-    private void setTasksResponse(int page){
-        setTasksResponse(page, pageSize);
+    private void setRolesResponse(int page){
+        setRolesResponse(page, pageSize);
     }
 
-    private void setTasksResponse(int page, int size){
-        tasksApi.myTasks(page, size).enqueue(new Callback<TaskPreviewPagination>() {
+    private void setRolesResponse(int page, int size){
+        rolesApi.myRoles(page, size).enqueue(new Callback<RolesPreviewPagination>() {
             @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
             @Override
             public void onResponse(
-                    @NonNull Call<TaskPreviewPagination> call,
-                    @NonNull Response<TaskPreviewPagination> response
+                    @NonNull Call<RolesPreviewPagination> call,
+                    @NonNull Response<RolesPreviewPagination> response
             ) {
                 if (response.isSuccessful()){
                     assert response.body() != null;
                     Pagination pagination = response.body().getPagination();
                     total = pagination.getTotal();
-                    List<TaskPreview> previews = response.body().getResult();
+                    List<RolePreview> previews = response.body().getResult();
                     int begin = pagination.getPage() * pagination.getSize();
                     int end = (pagination.getPage() + 1) * pagination.getSize();
                     if (begin == 0 && end > begin && previews.isEmpty()){
-                        tasksList.clear();
+                        rolesList.clear();
                     }
                     else{
                         for (int i=begin, j=0; i < end &&  j < previews.size(); i++, j++){
-                            if (i >= tasksList.size())
-                                tasksList.add(previews.get(j));
+                            if (i >= rolesList.size())
+                                rolesList.add(previews.get(j));
                             else
-                                tasksList.set(i, previews.get(j));
+                                rolesList.set(i, previews.get(j));
                         }
                     }
                 }else{
@@ -159,13 +164,13 @@ public class TasksFragment extends Fragment {
 //                    assert response.errorBody() != null;
 //                    debugText.setText(response.code()+ response.errorBody().toString());
                 }
-                textView.setVisibility(tasksList.isEmpty() ? View.VISIBLE : View.INVISIBLE);
+                textView.setVisibility(rolesList.isEmpty() ? View.VISIBLE : View.INVISIBLE);
                 recyclerAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(
-                    @NonNull Call<TaskPreviewPagination> call,
+                    @NonNull Call<RolesPreviewPagination> call,
                     @NonNull Throwable throwable
             ) {
 
