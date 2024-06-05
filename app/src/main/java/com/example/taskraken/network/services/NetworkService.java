@@ -14,8 +14,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkService {
     private static NetworkService mInstance;
-    private static final String BASE_URL = "http://10.0.2.2:8000";
-//    private static final String BASE_URL = "https://taskraken.czertilla.ru";
+//    using this ip for local debug on emulator. Needs launched webapp on localhost:8000
+//    private static final String BASE_URL = "http://10.0.2.2:8000";
+    private static final String BASE_URL = "https://taskraken.czertilla.ru";
     private final Retrofit mRetrofit;
 
     private NetworkService() {
