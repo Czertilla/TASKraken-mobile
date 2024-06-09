@@ -198,40 +198,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 return true;
-//            } else if (id == R.id.fragment_my_roles) {
-//                rolesFragment.setArguments(getIntent().getExtras());
-//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                ft.replace(R.id.fragment_container, rolesFragment);
-//                ft.commit();
             }
             return false;
         }
     }
 
-//    private void getUserFromCache(){
-//        User user = userRepository.getPickedUser();
-//        boolean flag;
-//        if (user == null){
-//            flag = false;
-//            return;
-//        }
-//        networkService.getAuthApi().login(
-//                user.email,
-//                user.password
-//        ).enqueue(new Callback<UserRead>() {
-//            @Override
-//            public void onResponse(
-//                    @NonNull Call<UserRead> call,
-//                    @NonNull Response<UserRead> response
-//            ) {
-//                flag = response.isSuccessful();
-//            }
-//
-//            @Override
-//            public void onFailure(@NonNull Call<UserRead> call, @NonNull Throwable t) {
-//                Log.e("", "");
-//                flag = false;
-//            }
-//        });
-//    }
 }
